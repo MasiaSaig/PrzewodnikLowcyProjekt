@@ -1,0 +1,9 @@
+.center-middle{
+    position: relative;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.error-text{
+    color: red;
+}

@@ -1,0 +1,11 @@
+@media screen and (max-width: 1264px){
+    #mainWindowWrapper{
+        width: 100%;
+        padding-left: 32px;
+        padding-right: 32px;
+    }
+}
+
+@media screen and (max-width: 1045px){
+    #headerTitle { width: 100%; }
+}
