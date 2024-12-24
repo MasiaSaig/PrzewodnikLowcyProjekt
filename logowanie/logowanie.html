@@ -1,4 +1,4 @@
-<?php 
+<!-- <?php 
 session_start(); 
 
 $username = $password = $error = "";
@@ -13,20 +13,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$sqlError = "";
 // check cookie if user is logged in
 	try{
-		$loggedInCheck = $pdo->prepare("SELECT (token_autoryzacji = :authLoginCookie) as match_login_token FROM prj.łowca");
-		$loggedInCheck->execute(['authLoginCookie' => $_COOKIE['authLoginToken']]);
+		$loggedInCheck = $pdo->prepare("SELECT (token_autoryzacji = :authLoginCookie) FROM prj.łowca WHERE imię=:username");
+		$loggedInCheck->execute(['authLoginCookie' => $_COOKIE['authLoginToken'], 'username' => $username]);
 		if($loggedInCheck->fetchColumn() == 1){
 			header("Location: http://pascal.fis.agh.edu.pl/~2mueller/index.php");
 			die();
-		}
+		}// else could not redirect, possibly wrong cookie loginToken.
 	}catch(PDOException $e){
 		$sqlError = $sqlError . "<br>" . $e->getMessage();
 	}
 
-	$hashed_password = "";
+	$hashed_password = $id = "";
 // check username and password in database
 	try{
-		$stmt = $pdo->prepare("SELECT id, (hasło_hash=crypt(:password, hasło_hash)) AS password_match FROM prj.łowca WHERE imię=:username;");	
+		$stmt = $pdo->prepare("SELECT id, (hasło_hash=crypt(:password, hasło_hash)) AS password_match FROM prj.łowca WHERE imię=:username;");
 		$stmt->execute(['password' => $password, 'username' => $username]);
 
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
@@ -45,6 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}else{
 		// set cookie
 		try{
+			// generate hashToken
 			$getPassHash = $pdo->prepare("SELECT crypt(:password, gen_salt('md5'));");
 			$getPassHash->execute(['password' => $password]);
 			$hashed_loginToken = $id . $getPassHash->fetchColumn();
@@ -52,7 +53,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			// logged in cookie, that lasts 30 days, keeps user logged in
 			setcookie("authLoginToken", $hashed_loginToken, time()+(86400*30), "/");
 			$updateAuthToken = $pdo->prepare("UPDATE prj.łowca SET token_autoryzacji=:authLoginCookie WHERE id=:id");
-			$updateAuthToken->execute(['authLoginCookie' => $_COOKIE['authLoginToken'], 'id'=>$id]);
+			$updateAuthToken->execute(['authLoginCookie' => $hashed_loginToken, 'id'=>$id]);
 		}catch(PDOException $e){
 			$sqlError = $sqlError . "<br>" . $e->getMessage();
 		}
@@ -65,7 +66,7 @@ function validateInput($data) {
 	$data = htmlspecialchars($data);
 	return $data;
 }
-?>
+?> -->
 
 <!DOCTYPE html>
 <html lang="pl-PL">
@@ -95,17 +96,17 @@ function validateInput($data) {
 	<div id="content">
 
         <div class="center-middle">
-            <p>Logowanie</p>
+            <h1>Logowanie</h1>
             <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
                 <input type="text" name="username">
                 <br>
                 <input type="password" name="password"> 
                 <br>
-                <input type="submit" value="login">
+                <input class="button" id="loginButton" type="submit" value="login">
             </form>
-            <?php echo "<p class=\"error-text\">".$error."</p>" ?>
-			<?php echo "<p class=\"error-text\">".$sqlError."</p>" ?>
-            <a href="rejestracja.php">Rejestracja</a>
+            <!-- <?php echo "<p class=\"error-text\">".$error."</p>" ?> -->
+			<!-- <?php echo "<p class=\"error-text\">".$sqlError."</p>" ?> -->
+            <a class="registration-button button" href="rejestracja.php">Rejestracja</a>
         </div>
 
 	</div>

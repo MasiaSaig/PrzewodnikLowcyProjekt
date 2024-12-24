@@ -1,7 +1,7 @@
 *{padding: 0; margin: 0; box-sizing: border-box; font-size: 16px;}
 
 body{
-    background-color: transparent;
+    background-color: black;
 }
 
 .grain-background{
@@ -37,7 +37,7 @@ body{
 
 #mainWindowWrapper{
     width: 1200px;
-    height: 600px;
+    /* height: 600px; */
     margin: auto;
     position: relative;
 }

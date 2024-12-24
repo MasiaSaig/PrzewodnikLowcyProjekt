@@ -1,9 +1,43 @@
+#content{
+    display: flex;
+    align-items: center;
+    vertical-align: middle;
+    justify-content: center;
+    min-height: 600px;
+}
+
 .center-middle{
-    position: relative;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 250px;
+    display: flex;
+    align-items: center;
+    /* vertical-align: middle; */
+    /* justify-content: center; */
+    text-align: center;
+    flex-direction: column;
+}
+h1 { font-size: 24px; }
+.center-middle *{
+    width: 100%;
+    margin: 2px;
+}
+
+.button{
+    width: 128px;
+    font-size: 20px;
+    border-radius: 8px;
+}
+#loginButton{
+    background-color: green;
+    color: white;
 }
 
 .error-text{
     color: red;
+}
+
+.registration-button{
+    background-color: orangered;
+    color: white;
+    text-decoration: none;
+    margin: 8px;
 }
