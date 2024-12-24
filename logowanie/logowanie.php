@@ -20,26 +20,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 			die();
 		}
 	}catch(PDOException $e){
-		$sqlError = $e->getMessage();
+		$sqlError = $sqlError . "<br>" . $e->getMessage();
 	}
 
 	$hashed_password = "";
 // check username and password in database
 	try{
-		// echo "<br>" . $username . " " . $password . "<br>";
 		$stmt = $pdo->prepare("SELECT id, (hasło_hash=crypt(:password, hasło_hash)) AS password_match FROM prj.łowca WHERE imię=:username;");	
 		$stmt->execute(['password' => $password, 'username' => $username]);
-		
-		$getPassHash = $pdo->prepare("SELECT crypt(:password, gen_salt('md5'));");
-		$getPassHash->execute(['password' => $password]);
-		$hashed_password = $getPassHash->fetchColumn();
 
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		if($result){
 			foreach($result as $row){
 				$id = $row['id'];
 				$password_match = $row['password_match'];
-				print_r($row);
 			}
 		}
 	}catch(PDOException $e){
@@ -51,9 +45,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	}else{
 		// set cookie
 		try{
-			// logged in cookie, that lasts 30 days, keeps user logged in
-			setcookie("authLoginToken", $id . $hashed_password, time()+(86400*30), "/");
+			$getPassHash = $pdo->prepare("SELECT crypt(:password, gen_salt('md5'));");
+			$getPassHash->execute(['password' => $password]);
+			$hashed_loginToken = $id . $getPassHash->fetchColumn();
 
+			// logged in cookie, that lasts 30 days, keeps user logged in
+			setcookie("authLoginToken", $hashed_loginToken, time()+(86400*30), "/");
 			$updateAuthToken = $pdo->prepare("UPDATE prj.łowca SET token_autoryzacji=:authLoginCookie WHERE id=:id");
 			$updateAuthToken->execute(['authLoginCookie' => $_COOKIE['authLoginToken'], 'id'=>$id]);
 		}catch(PDOException $e){
