@@ -25,7 +25,7 @@
 	<div id="content">
         <?php 
         include "database.php";
-        if(!$_POST["username"]){
+        if(!$_POST[username]){
         ?>
 
         <div class="center-middle">
