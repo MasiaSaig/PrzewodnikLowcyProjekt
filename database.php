@@ -6,10 +6,9 @@ $dbUser = "u2mueller";
 $dbPassword = "2mueller";
 $dbDsn = "pgsql:host=$dbHost;dbname=$dbName;user=$dbUser;port=$dbPort;password=$dbPassword;";
 
-
 try{
 	if(!session_id()) session_start(); 
-	$pdo = new PDO($dsn);
+	$pdo = new PDO($dbDsn);
 	$pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 	//echo "Connected";
 }catch(PDOException $e){

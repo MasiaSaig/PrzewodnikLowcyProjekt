@@ -10,8 +10,8 @@ body{
     background-size: cover;
 }
 .grain-background:after{
-    content:"";
-    background-image:url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png");
+    content: "";
+    background-image: url("https://upload.wikimedia.org/wikipedia/commons/7/76/1k_Dissolve_Noise_Texture.png");
     height: 300%;
     width: 300%;
     position: fixed;
@@ -52,8 +52,7 @@ body{
 header {
     padding-top: 8px;
     padding-bottom: 8px;
-    background:
-    radial-gradient(at 50% 0, black, transparent 85%);
+    background: radial-gradient(at 50% 0, black, transparent 85%);
 }
 #headerTitle{
     height: 100%;

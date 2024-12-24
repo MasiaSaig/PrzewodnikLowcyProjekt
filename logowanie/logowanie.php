@@ -10,25 +10,30 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$_SESSION["password"] = $password;
 
 	require "../database.php";
-
+	$sqlError = "";
 // check cookie if user is logged in
 	try{
-		$loggedInCheck = $pdo->prepare("SELECT (token_autoryzacji = :cookieAuth) as match_login_token FROM prj.łowca");
+		$loggedInCheck = $pdo->prepare("SELECT (token_autoryzacji = :authLoginCookie) as match_login_token FROM prj.łowca");
 		$loggedInCheck->execute(['authLoginCookie' => $_COOKIE['authLoginToken']]);
 		if($loggedInCheck->fetchColumn() == 1){
 			header("Location: http://pascal.fis.agh.edu.pl/~2mueller/index.php");
 			die();
 		}
 	}catch(PDOException $e){
-		echo "<p class=\"error\">" . $e->getMessage() . "</p>";
+		$sqlError = $e->getMessage();
 	}
 
+	$hashed_password = "";
 // check username and password in database
 	try{
-		echo "<br>" . $username . " " . $password . "<br>";
+		// echo "<br>" . $username . " " . $password . "<br>";
 		$stmt = $pdo->prepare("SELECT id, (hasło_hash=crypt(:password, hasło_hash)) AS password_match FROM prj.łowca WHERE imię=:username;");	
 		$stmt->execute(['password' => $password, 'username' => $username]);
 		
+		$getPassHash = $pdo->prepare("SELECT crypt(:password, gen_salt('md5'));");
+		$getPassHash->execute(['password' => $password]);
+		$hashed_password = $getPassHash->fetchColumn();
+
 		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 		if($result){
 			foreach($result as $row){
@@ -37,37 +42,23 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 				print_r($row);
 			}
 		}
-
-		/*$qer = $pdo->query("SELECT (hasło_hash=crypt('haslo', hasło_hash)), id FROM prj.łowca WHERE imię='nazwa';");
-		$deleteme = $qer->fetchColumn(0);
-		$delete = ;
-		echo $deleteme . "  A " . $delete;*/
-		if($password_match == 0){
-			$error = "Błędna nazwa lub hasło.";
-			return;
-		}
-
-		echo "<br>password check Error:";
-		print_r($stmt->errorInfo());
-		echo "<br>";
-		echo "count=".count($result)." id=".$id." pass_match=".$password_match."<br>";
-		echo "finished";
 	}catch(PDOException $e){
-		echo "<p class=\"error\">" . $e->getMessage() . "</p>";
+		$sqlError = $sqlError . "<br>" . $e->getMessage();
 	};
 
-// set cookie
-	try{
-		// logged in cookie, that lasts 30 days, keeps user logged in
-		setcookie("authLoginToken", $id . $hashed_password, time()+(86400*30), "/");
+	if($password_match == 0){
+		$error = "Błędna nazwa lub hasło.";
+	}else{
+		// set cookie
+		try{
+			// logged in cookie, that lasts 30 days, keeps user logged in
+			setcookie("authLoginToken", $id . $hashed_password, time()+(86400*30), "/");
 
-		$updateAuthToken = $pdo->prepare("UPDATE prj.łowca SET token_autoryzacji=:authLoginCookie WHERE id=:id");
-		$updateAuthToken->execute(['authLoginCookie' => $_COOKIE['authLoginToken'], 'id'=>$id]);
-
-		echo "<br>authcookie Error: " . $updateAuthToken->errorInfo();
-		
-	}catch(PDOException $e){
-		echo "<p class=\"error\">" . $e->getMessage() . "</p>";
+			$updateAuthToken = $pdo->prepare("UPDATE prj.łowca SET token_autoryzacji=:authLoginCookie WHERE id=:id");
+			$updateAuthToken->execute(['authLoginCookie' => $_COOKIE['authLoginToken'], 'id'=>$id]);
+		}catch(PDOException $e){
+			$sqlError = $sqlError . "<br>" . $e->getMessage();
+		}
 	}
 }
 
@@ -77,7 +68,6 @@ function validateInput($data) {
 	$data = htmlspecialchars($data);
 	return $data;
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -117,6 +107,7 @@ function validateInput($data) {
                 <input type="submit" value="login">
             </form>
             <?php echo "<p class=\"error-text\">".$error."</p>" ?>
+			<?php echo "<p class=\"error-text\">".$sqlError."</p>" ?>
             <a href="rejestracja.php">Rejestracja</a>
         </div>
 
