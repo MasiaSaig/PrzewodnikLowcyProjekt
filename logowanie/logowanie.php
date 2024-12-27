@@ -6,7 +6,7 @@ $sqlError = $error = "";
 
 $loggedIn = false;
 try{
-	$loggedIn = include "logowanie/zalogowany.php";
+	$loggedIn = include "zalogowany.php";
 }catch(PDOException $e){
 	$sqlError = $sqlError . "<br>" . $e->getMessage();
 }
@@ -47,7 +47,7 @@ if(!$loggedIn){
 				$hashed_loginToken = $id . $getPassHash->fetchColumn();
 
 				// logged in cookie, that lasts 30 days, keeps user logged in
-				setcookie("authLoginToken", $hashed_loginToken, time()+(86400*30), "/");
+				setcookie("authLoginToken", $hashed_loginToken, time()+(86400*30));
 				$updateAuthToken = $pdo->prepare("UPDATE prj.łowca SET token_autoryzacji=:authLoginCookie WHERE id=:id");
 				$updateAuthToken->execute(['authLoginCookie' => $hashed_loginToken, 'id'=>$id]);
 			}catch(PDOException $e){
@@ -55,6 +55,9 @@ if(!$loggedIn){
 			}
 		}
 	}
+}else{
+	header("Location: http://pascal.fis.agh.edu.pl/~2mueller/index.php");
+	die();
 }
 
 function validateInput($data) {
