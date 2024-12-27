@@ -99,9 +99,9 @@ function validateInput($data) {
         <div class="center-middle">
             <h1>Logowanie</h1>
             <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-				<p>Nazwa/Imię</p><br>
+				<p>Nazwa/Imię</p>
 				<input type="text" name="username"><br>
-				<p>Hasło</p><br>
+				<p>Hasło</p>
                 <input type="password" name="password"><br>
                 <input id="loginButton" class="button" type="submit" value="login">
             </form>

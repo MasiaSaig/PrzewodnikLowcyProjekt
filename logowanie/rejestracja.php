@@ -95,15 +95,16 @@ function validateInput($data) {
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="author" content="Maciej Muller">
 
-	<link rel="Stylesheet" href="styles.css">
-	<link rel="Stylesheet" href="styles_tablet.css">
-	<link rel="Stylesheet" href="styles_mobile.css">
+	<link rel="Stylesheet" href="../styles.css">
+	<link rel="Stylesheet" href="../styles_tablet.css">
+	<link rel="Stylesheet" href="../styles_mobile.css">
+	<link rel="Stylesheet" href="styles_logowanie.css">
 	<title>Projekt</title>
 </head>
 <body class="grain-background">
 
 <header>
-	<img id="headerTitle" src="assets/przewodnik_lowcy_header.png" alt="Przewodnik Łowcy">
+	<img id="headerTitle" src="../assets/przewodnik_lowcy_header.png" alt="Przewodnik Łowcy">
 </header>
 
 <section id="mainWindowWrapper">
@@ -114,30 +115,44 @@ function validateInput($data) {
         <div class="center-middle">
             <h1>Rejestracja</h1>
             <form method="post" action="./script/registerValidation.php" enctype="multipart/form-data">
-                <p>Imię</p><br>
+                <p>Imię</p>
                 <input type="text" name="username"><br>
-                <p>Hasło</p><br>
+                <p>Hasło</p>
 				<input type="password" name="password"> <br>
-				<p>Powtórz hasło</p><br>
+				<p>Powtórz hasło</p>
 				<input type="password" name="password_repeat"> <br>
-				<p>Rasa</p><br>
+				<p>Rasa</p>
 				<select id="race-select" name="id_race">
 					<?php 
                     // get all values from prj.rasa 
-                    $racesQuery = $pdo->query("SELECT id, nazwa FROM prj.rasa");
-		            foreach ($racesQuery as $race){
-						echo "<option value=\"" . $race["id"] . "\">" . $race["nazwa"] . "</option>";
+					try{
+						$racesQuery = $pdo->query("SELECT id, nazwa FROM prj.rasa");
+						if($racesQuery){
+							foreach ($racesQuery->fetchAll() as $race){
+								echo "<option value=\"" . $race["id"] . "\">" . $race["nazwa"] . "</option>";
+							}
+						}else{
+							echo "No Data??!";
+						}
+					}catch(PDOException $e){
+						$sqlError = $sqlError . "<br>" . $e->getMessage();
 					}
+					echo $racesQuery->fetchColumn();
                     ?>
                     <option value="volvo">Volvo</option>
 				</select><br>
-				<p>Klasa</p><br>
+				<p>Klasa</p>
 				<select id="class-select" name="id_class">
 					<?php 
 					// get all values from prj.klasa
-                    $classesQuery = $pdo->query("SELECT id, nazwa FROM prj.klasa");
-		            foreach ($classesQuery as $class){
-						echo "<option value=\"" . $class["id"] . "\">" . $class["nazwa"] . "</option>";
+					try{
+						$classesQuery = $pdo->query("SELECT id, nazwa FROM prj.klasa");
+
+						foreach ($classesQuery as $class){
+							echo "<option value=\"" . $class["id"] . "\">" . $class["nazwa"] . "</option>";
+						}
+					}catch(PDOException $e){
+						$sqlError = $sqlError . "<br>" . $e->getMessage();
 					}
                     ?>
 				</select><br>
