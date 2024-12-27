@@ -1,24 +1,25 @@
-<!-- <?php 
+<?php 
 session_start(); 
 
-$username = $password = $error = "";
+$username = $password = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$username = validateInput($_POST["username"]);
 	$password = $_POST["password"];
 
-	$_SESSION["username"] = $username;
-	$_SESSION["password"] = $password;
+	// $_SESSION["username"] = $username;
+	// $_SESSION["password"] = $password;
 
 	require "../database.php";
-	$sqlError = "";
+	$sqlError = $error = "";
 // check cookie if user is logged in
 	try{
 		$loggedInCheck = $pdo->prepare("SELECT (token_autoryzacji = :authLoginCookie) FROM prj.łowca WHERE imię=:username");
 		$loggedInCheck->execute(['authLoginCookie' => $_COOKIE['authLoginToken'], 'username' => $username]);
 		if($loggedInCheck->fetchColumn() == 1){
+			// user already logged in
 			header("Location: http://pascal.fis.agh.edu.pl/~2mueller/index.php");
 			die();
-		}// else could not redirect, possibly wrong cookie loginToken.
+		}// else could not redirect, possibly wrong cookie loginToken, or user is just not logged in.
 	}catch(PDOException $e){
 		$sqlError = $sqlError . "<br>" . $e->getMessage();
 	}
@@ -66,7 +67,7 @@ function validateInput($data) {
 	$data = htmlspecialchars($data);
 	return $data;
 }
-?> -->
+?>
 
 <!DOCTYPE html>
 <html lang="pl-PL">
@@ -98,15 +99,15 @@ function validateInput($data) {
         <div class="center-middle">
             <h1>Logowanie</h1>
             <form method="POST" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>">
-                <input type="text" name="username">
-                <br>
-                <input type="password" name="password"> 
-                <br>
-                <input class="button" id="loginButton" type="submit" value="login">
+				<p>Nazwa/Imię</p><br>
+				<input type="text" name="username"><br>
+				<p>Hasło</p><br>
+                <input type="password" name="password"><br>
+                <input id="loginButton" class="button" type="submit" value="login">
             </form>
-            <!-- <?php echo "<p class=\"error-text\">".$error."</p>" ?> -->
-			<!-- <?php echo "<p class=\"error-text\">".$sqlError."</p>" ?> -->
-            <a class="registration-button button" href="rejestracja.php">Rejestracja</a>
+            <?php echo "<p class=\"error-text\">".$error."</p>" ?>
+			<?php echo "<p class=\"error-text\">".$sqlError."</p>" ?>
+            <a id="registrationButton" class="button" href="rejestracja.php">Przejdz do rejestracji</a>
         </div>
 
 	</div>

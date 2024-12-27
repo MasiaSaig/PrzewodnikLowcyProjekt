@@ -15,7 +15,7 @@
     text-align: center;
     flex-direction: column;
 }
-h1 { font-size: 24px; }
+h1 { font-size: 24px; text-align: center; }
 .center-middle *{
     width: 100%;
     margin: 2px;
@@ -25,6 +25,7 @@ h1 { font-size: 24px; }
     width: 128px;
     font-size: 20px;
     border-radius: 8px;
+    padding: 2px;
 }
 #loginButton{
     background-color: green;
@@ -35,7 +36,7 @@ h1 { font-size: 24px; }
     color: red;
 }
 
-.registration-button{
+#registrationButton{
     background-color: orangered;
     color: white;
     text-decoration: none;
