@@ -134,10 +134,10 @@ function validateInput($data) {
 						}else{
 							echo "No Data??!";
 						}
+						echo $racesQuery->fetchColumn();
 					}catch(PDOException $e){
 						$sqlError = $sqlError . "<br>" . $e->getMessage();
 					}
-					echo $racesQuery->fetchColumn();
                     ?>
                     <option value="volvo">Volvo</option>
 				</select><br>
