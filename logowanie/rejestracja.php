@@ -124,6 +124,7 @@ function validateInput($data) {
 				<p>Rasa</p>
 				<select id="race-select" name="id_race">
 					<?php 
+					echo "<option value=\"aa\">aa</option>";
                     // get all values from prj.rasa 
 					try{
 						$racesQuery = $pdo->query("SELECT id, nazwa FROM prj.rasa;");
