@@ -1,19 +1,14 @@
 <?php 
 session_start(); 
 
-require "../database.php";
+require "database.php";
 $loggedIn = false;
-// check cookie if user is logged in
 try{
-	$loggedInCheck = $pdo->prepare("SELECT (token_autoryzacji = :authLoginCookie) FROM prj.łowca WHERE imię=:username");
-	$loggedInCheck->execute(['authLoginCookie' => $_COOKIE['authLoginToken'], 'username' => $username]);
-	if($loggedInCheck->fetchColumn() == 1){
-		// user already logged in
-		$loggedIn = true;
-	}// else could not redirect, possibly wrong cookie loginToken, or user is just not logged in.
+	$loggedIn = include "logowanie/zalogowany.php";
 }catch(PDOException $e){
-	$sqlError = $sqlError . "<br>" . $e->getMessage();
+	echo "BŁĄD podczas sprawdzania, czy użytkownik jest zalogowany: ". $e->getMessage();
 }
+
 ?>
 <!DOCTYPE html>
 <html lang="pl-PL">

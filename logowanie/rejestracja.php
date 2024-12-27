@@ -2,77 +2,88 @@
 session_start(); 
 
 require "../database.php";
-$username = $surname = $password = $password_repeat = $id_race = $id_class = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$username = validateInput($_POST["username"]);
-    $surname = validateInput($_POST["surname"]);
-	$password = $_POST["password"];
-    $password_repeat = $_POST["password_repeat"];
-    $id_race = $_POST["id_race"];
-    $id_class = $_POST["id_class"];
+$sqlError = $error = "";
 
-	$_SESSION["username"] = $username;
-	$_SESSION["password"] = $password;
+$loggedIn = false;
+try{
+	$loggedIn = include "logowanie/zalogowany.php";
+}catch(PDOException $e){
+	$sqlError = $sqlError . "<br>" . $e->getMessage();
+}
 
-	$sqlError = $error = "";
-// check cookie if user is logged in
-	try{
-		$loggedInCheck = $pdo->prepare("SELECT (token_autoryzacji = :authLoginCookie) FROM prj.łowca WHERE imię=:username");
-		$loggedInCheck->execute(['authLoginCookie' => $_COOKIE['authLoginToken'], 'username' => $username]);
-		if($loggedInCheck->fetchColumn() == 1){
-			// user already logged in
-			header("Location: http://pascal.fis.agh.edu.pl/~2mueller/index.php");
-			die();
-		}// else could not redirect, possibly wrong cookie loginToken, or user is just not logged in.
-	}catch(PDOException $e){
-		$sqlError = $sqlError . "<br>" . $e->getMessage();
-	}
-// check if password equals repeated password
-	if($password == $password_repeat){
-		$error = $error . " Podane hasła nie są takie same.";
-	}
-// validate unique username
-	try{
-		$checkUniqueName = $pdo->prepare("SELECT (imię=:username) FROM prj.łowca WHERE imię=:username;");
-		$checkUniqueName->execute(['username'=>$username]);
-		$res = $checkUniqueName->fetchColumn();
-		if(($res == true) && ($res == 1)){
-			$error = $error . " Podane imię, już istnieje.";
-		}
-	}catch(PDOEXception $e){
-		$sqlError = $sqlError . "<br>" . $e->getMessage();
-	}
-// validate id_race
-	try{
-		$validateRaceQuery = $pdo->prepare("SELECT (id=:id_rasa) FROM prj.rasa WHERE id=:id_rasa;");
-		$validateRaceQuery->execute(['id_rasa'=>$id_race]);
-		$res = $validateRaceQuery->fetchColumn();
-		if(($res == true) && ($res == 1)){
-			$error = $error . " Podana rasa, nie istnieje.";
-		}
-	}catch(PDOEXception $e){
-		$sqlError = $sqlError . "<br>" . $e->getMessage();
-	}
-// validate id_class
-	try{
-		$validateClassQuery = $pdo->prepare("SELECT (id=:id_class) FROM prj.klasa WHERE id=:id_class;");
-		$validateClassQuery->execute(['id_class'=>$id_class]);
-		$res = $validateClassQuery->fetchColumn();
-		if(($res == true) && ($res == 1)){
-			$error = $error . " Podana klasa, nie istnieje.";
-		}
-	}catch(PDOEXception $e){
-		$sqlError = $sqlError . "<br>" . $e->getMessage();
-	}
+if(!$loggedIn){
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		$username = $surname = $password = $password_repeat = $id_race = $id_class = "";
+		$username = validateInput($_POST["username"]);
+		$surname = validateInput($_POST["surname"]);
+		$password = $_POST["password"];
+		$password_repeat = $_POST["password_repeat"];
+		$id_race = $_POST["id_race"];
+		$id_class = $_POST["id_class"];
 
-// create new hunter in database
-	if(empty($error) && empty($sqlError)){
+		$_SESSION["username"] = $username;
+		$_SESSION["password"] = $password;
+
+		$sqlError = $error = "";
+	// check cookie if user is logged in
 		try{
-			$createHunterQuery = $pdo->prepare("INSERT INTO prj.łowca (imię, hasło_hash, id_rasa, id_klasa) VALUES 
-											(:username, crypt(:password, gen_salt('md5')), :id_rasa, :id_klasa);");
-			$createHunterQuery->execute(['username'=>$username, 'password'=>$password, 'id_rasa'=>$id_race, 'id_klasa'=>$id_class]);
+			$loggedInCheck = $pdo->prepare("SELECT (token_autoryzacji = :authLoginCookie) FROM prj.łowca WHERE imię=:username");
+			$loggedInCheck->execute(['authLoginCookie' => $_COOKIE['authLoginToken'], 'username' => $username]);
+			if($loggedInCheck->fetchColumn() == 1){
+				// user already logged in
+				header("Location: http://pascal.fis.agh.edu.pl/~2mueller/index.php");
+				die();
+			}// else could not redirect, possibly wrong cookie loginToken, or user is just not logged in.
 		}catch(PDOException $e){
 			$sqlError = $sqlError . "<br>" . $e->getMessage();
+		}
+	// check if password equals repeated password
+		if($password == $password_repeat){
+			$error = $error . " Podane hasła nie są takie same.";
+		}
+	// validate unique username
+		try{
+			$checkUniqueName = $pdo->prepare("SELECT (imię=:username) FROM prj.łowca WHERE imię=:username;");
+			$checkUniqueName->execute(['username'=>$username]);
+			$res = $checkUniqueName->fetchColumn();
+			if(($res == true) && ($res == 1)){
+				$error = $error . " Podane imię, już istnieje.";
+			}
+		}catch(PDOEXception $e){
+			$sqlError = $sqlError . "<br>" . $e->getMessage();
+		}
+	// validate id_race
+		try{
+			$validateRaceQuery = $pdo->prepare("SELECT (id=:id_rasa) FROM prj.rasa WHERE id=:id_rasa;");
+			$validateRaceQuery->execute(['id_rasa'=>$id_race]);
+			$res = $validateRaceQuery->fetchColumn();
+			if(($res == true) && ($res == 1)){
+				$error = $error . " Podana rasa, nie istnieje.";
+			}
+		}catch(PDOEXception $e){
+			$sqlError = $sqlError . "<br>" . $e->getMessage();
+		}
+	// validate id_class
+		try{
+			$validateClassQuery = $pdo->prepare("SELECT (id=:id_class) FROM prj.klasa WHERE id=:id_class;");
+			$validateClassQuery->execute(['id_class'=>$id_class]);
+			$res = $validateClassQuery->fetchColumn();
+			if(($res == true) && ($res == 1)){
+				$error = $error . " Podana klasa, nie istnieje.";
+			}
+		}catch(PDOEXception $e){
+			$sqlError = $sqlError . "<br>" . $e->getMessage();
+		}
+
+	// create new hunter in database
+		if(empty($error) && empty($sqlError)){
+			try{
+				$createHunterQuery = $pdo->prepare("INSERT INTO prj.łowca (imię, hasło_hash, id_rasa, id_klasa) VALUES 
+												(:username, crypt(:password, gen_salt('md5')), :id_rasa, :id_klasa);");
+				$createHunterQuery->execute(['username'=>$username, 'password'=>$password, 'id_rasa'=>$id_race, 'id_klasa'=>$id_class]);
+			}catch(PDOException $e){
+				$sqlError = $sqlError . "<br>" . $e->getMessage();
+			}
 		}
 	}
 }

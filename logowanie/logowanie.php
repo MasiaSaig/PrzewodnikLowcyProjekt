@@ -1,62 +1,58 @@
 <?php 
 session_start(); 
 
-$username = $password = "";
-if ($_SERVER["REQUEST_METHOD"] == "POST") {
-	$username = validateInput($_POST["username"]);
-	$password = $_POST["password"];
+require "../database.php";
+$sqlError = $error = "";
 
-	// $_SESSION["username"] = $username;
-	// $_SESSION["password"] = $password;
+$loggedIn = false;
+try{
+	$loggedIn = include "logowanie/zalogowany.php";
+}catch(PDOException $e){
+	$sqlError = $sqlError . "<br>" . $e->getMessage();
+}
 
-	require "../database.php";
-	$sqlError = $error = "";
-// check cookie if user is logged in
-	try{
-		$loggedInCheck = $pdo->prepare("SELECT (token_autoryzacji = :authLoginCookie) FROM prj.łowca WHERE imię=:username");
-		$loggedInCheck->execute(['authLoginCookie' => $_COOKIE['authLoginToken'], 'username' => $username]);
-		if($loggedInCheck->fetchColumn() == 1){
-			// user already logged in
-			header("Location: http://pascal.fis.agh.edu.pl/~2mueller/index.php");
-			die();
-		}// else could not redirect, possibly wrong cookie loginToken, or user is just not logged in.
-	}catch(PDOException $e){
-		$sqlError = $sqlError . "<br>" . $e->getMessage();
-	}
+if(!$loggedIn){
+	$username = $password = "";
+	if ($_SERVER["REQUEST_METHOD"] == "POST") {
+		$username = validateInput($_POST["username"]);
+		$password = $_POST["password"];
 
-	$hashed_password = $id = "";
-// check username and password in database
-	try{
-		$stmt = $pdo->prepare("SELECT id, (hasło_hash=crypt(:password, hasło_hash)) AS password_match FROM prj.łowca WHERE imię=:username;");
-		$stmt->execute(['password' => $password, 'username' => $username]);
+		
 
-		$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
-		if($result){
-			foreach($result as $row){
-				$id = $row['id'];
-				$password_match = $row['password_match'];
-			}
-		}
-	}catch(PDOException $e){
-		$sqlError = $sqlError . "<br>" . $e->getMessage();
-	};
-
-	if($password_match == 0){
-		$error = "Błędna nazwa lub hasło.";
-	}else{
-		// set cookie
+		$hashed_password = $id = "";
+	// check username and password in database
 		try{
-			// generate hashToken
-			$getPassHash = $pdo->prepare("SELECT crypt(:password, gen_salt('md5'));");
-			$getPassHash->execute(['password' => $password]);
-			$hashed_loginToken = $id . $getPassHash->fetchColumn();
+			$stmt = $pdo->prepare("SELECT id, (hasło_hash=crypt(:password, hasło_hash)) AS password_match FROM prj.łowca WHERE imię=:username;");
+			$stmt->execute(['password' => $password, 'username' => $username]);
 
-			// logged in cookie, that lasts 30 days, keeps user logged in
-			setcookie("authLoginToken", $hashed_loginToken, time()+(86400*30), "/");
-			$updateAuthToken = $pdo->prepare("UPDATE prj.łowca SET token_autoryzacji=:authLoginCookie WHERE id=:id");
-			$updateAuthToken->execute(['authLoginCookie' => $hashed_loginToken, 'id'=>$id]);
+			$result = $stmt->fetchAll(PDO::FETCH_ASSOC);
+			if($result){
+				foreach($result as $row){
+					$id = $row['id'];
+					$password_match = $row['password_match'];
+				}
+			}
 		}catch(PDOException $e){
 			$sqlError = $sqlError . "<br>" . $e->getMessage();
+		};
+
+		if($password_match == 0){
+			$error = "Błędna nazwa lub hasło.";
+		}else{
+			// set cookie
+			try{
+				// generate hashToken
+				$getPassHash = $pdo->prepare("SELECT crypt(:password, gen_salt('md5'));");
+				$getPassHash->execute(['password' => $password]);
+				$hashed_loginToken = $id . $getPassHash->fetchColumn();
+
+				// logged in cookie, that lasts 30 days, keeps user logged in
+				setcookie("authLoginToken", $hashed_loginToken, time()+(86400*30), "/");
+				$updateAuthToken = $pdo->prepare("UPDATE prj.łowca SET token_autoryzacji=:authLoginCookie WHERE id=:id");
+				$updateAuthToken->execute(['authLoginCookie' => $hashed_loginToken, 'id'=>$id]);
+			}catch(PDOException $e){
+				$sqlError = $sqlError . "<br>" . $e->getMessage();
+			}
 		}
 	}
 }
