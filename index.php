@@ -5,11 +5,13 @@ require "database.php";
 $loggedIn = false;
 try{
 	$loggedIn = include "logowanie/zalogowany.php";
+	echo "inside login? " . $loggedIn;
 }catch(PDOException $e){
 	echo "BŁĄD podczas sprawdzania, czy użytkownik jest zalogowany: ". $e->getMessage();
 }
-
+echo "outside login? " . $loggedIn;
 ?>
+
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>

@@ -7,9 +7,11 @@ $sqlError = $error = "";
 $loggedIn = false;
 try{
 	$loggedIn = include "zalogowany.php";
+	echo "inside login? " . $loggedIn;
 }catch(PDOException $e){
 	$sqlError = $sqlError . "<br>" . $e->getMessage();
 }
+echo "outside login? " . $loggedIn;
 
 if(!$loggedIn){
 	$username = $password = "";
@@ -88,7 +90,7 @@ function validateInput($data) {
 
 <header>
 	<a href="http://pascal.fis.agh.edu.pl/~2mueller/index.php">
-		<img id="headerTitle" src="assets/przewodnik_lowcy_header.png" alt="Przewodnik Łowcy"> 
+		<img id="headerTitle" src="../assets/przewodnik_lowcy_header.png" alt="Przewodnik Łowcy"> 
 	</a>
 </header>
 
