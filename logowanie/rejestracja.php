@@ -104,7 +104,9 @@ function validateInput($data) {
 <body class="grain-background">
 
 <header>
-	<img id="headerTitle" src="../assets/przewodnik_lowcy_header.png" alt="Przewodnik Łowcy">
+	<a href="http://pascal.fis.agh.edu.pl/~2mueller/index.php">
+		<img id="headerTitle" src="assets/przewodnik_lowcy_header.png" alt="Przewodnik Łowcy"> 
+	</a>
 </header>
 
 <section id="mainWindowWrapper">
@@ -124,7 +126,6 @@ function validateInput($data) {
 				<p>Rasa</p>
 				<select id="race-select" name="id_race">
 					<?php 
-					echo "<option value=\"aa\">aa</option>";
                     // get all values from prj.rasa 
 					try{
 						$racesQuery = $pdo->query("SELECT id, nazwa FROM prj.rasa;");
@@ -133,7 +134,7 @@ function validateInput($data) {
 								echo "<option value='" . $race["id"] . "'>" . $race["nazwa"] . "</option>";
 							}
 						}else{
-							echo "No Data??!";
+							echo $sqlError . " Nie można pobrać ras.";
 						}
 						echo $racesQuery->fetchColumn();
 					}catch(PDOException $e){
@@ -147,8 +148,12 @@ function validateInput($data) {
 					// get all values from prj.klasa
 					try{
 						$classesQuery = $pdo->query("SELECT id, nazwa FROM prj.klasa;");
-						foreach ($classesQuery as $class){
-							echo "<option value='" . $class["id"] . "'>" . $class["nazwa"] . "</option>";
+						if($classesQuery){
+							foreach ($classesQuery as $class){
+								echo "<option value='" . $class["id"] . "'>" . $class["nazwa"] . "</option>";
+							}
+						}else{
+							$sqlError = $sqlError . " Nie można pobrać ras.";
 						}
 					}catch(PDOException $e){
 						$sqlError = $sqlError . "<br>" . $e->getMessage();
@@ -161,7 +166,6 @@ function validateInput($data) {
 			<?php echo "<p class=\"error-text\">".$sqlError."</p>" ?>
 			<a id="loginButton" class="button" href="logowanie.php">Przejdz do logowania</a>
         </div>
-
 	</div>
 </section>
 </section>

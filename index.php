@@ -1,3 +1,20 @@
+<?php 
+session_start(); 
+
+require "../database.php";
+$loggedIn = false;
+// check cookie if user is logged in
+try{
+	$loggedInCheck = $pdo->prepare("SELECT (token_autoryzacji = :authLoginCookie) FROM prj.łowca WHERE imię=:username");
+	$loggedInCheck->execute(['authLoginCookie' => $_COOKIE['authLoginToken'], 'username' => $username]);
+	if($loggedInCheck->fetchColumn() == 1){
+		// user already logged in
+		$loggedIn = true;
+	}// else could not redirect, possibly wrong cookie loginToken, or user is just not logged in.
+}catch(PDOException $e){
+	$sqlError = $sqlError . "<br>" . $e->getMessage();
+}
+?>
 <!DOCTYPE html>
 <html lang="pl-PL">
 <head>
@@ -16,7 +33,9 @@
 <body class="grain-background">
 
 <header>
-	<img id="headerTitle" src="assets/przewodnik_lowcy_header.png" alt="Przewodnik Łowcy">
+	<a href="http://pascal.fis.agh.edu.pl/~2mueller/index.php">
+		<img id="headerTitle" src="assets/przewodnik_lowcy_header.png" alt="Przewodnik Łowcy"> 
+	</a>
 </header>
 
 <section id="mainWindowWrapper">
@@ -28,8 +47,13 @@
 		<a href="index.php?page=klasy">Klasy</a>
 		
 		<div id="navbar-right">
-			<a href="logowanie/logowanie.php">Logowanie</a>
-			<a href="logowanie/rejestracja.php">Rejestracja</a>
+			<?php 
+			if($loggedIn){
+				echo "<a href=\"http://pascal.fis.agh.edu.pl/~2mueller/logowanie/wyloguj.php\">Wyloguj</a>";
+			} else {
+				echo "<a href=\"logowanie/logowanie.php\">Logowanie</a>";
+				echo "<a href=\"logowanie/rejestracja.php\">Rejestracja</a>";
+			} ?>
 		</div>
 	</nav>
 

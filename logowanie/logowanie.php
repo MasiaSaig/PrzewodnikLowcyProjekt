@@ -88,7 +88,9 @@ function validateInput($data) {
 <body class="grain-background">
 
 <header>
-	<img id="headerTitle" src="../assets/przewodnik_lowcy_header.png" alt="Przewodnik Łowcy">
+	<a href="http://pascal.fis.agh.edu.pl/~2mueller/index.php">
+		<img id="headerTitle" src="assets/przewodnik_lowcy_header.png" alt="Przewodnik Łowcy"> 
+	</a>
 </header>
 
 <section id="mainWindowWrapper">
