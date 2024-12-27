@@ -147,7 +147,6 @@ function validateInput($data) {
 					// get all values from prj.klasa
 					try{
 						$classesQuery = $pdo->query("SELECT id, nazwa FROM prj.klasa");
-
 						foreach ($classesQuery as $class){
 							echo "<option value=\"" . $class["id"] . "\">" . $class["nazwa"] . "</option>";
 						}
