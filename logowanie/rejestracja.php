@@ -98,6 +98,7 @@ function validateInput($data) {
 	<link rel="Stylesheet" href="styles.css">
 	<link rel="Stylesheet" href="styles_tablet.css">
 	<link rel="Stylesheet" href="styles_mobile.css">
+	<link rel="Stylesheet" href="styles_logowanie.css">
 	<title>Projekt</title>
 </head>
 <body class="grain-background">
@@ -124,9 +125,13 @@ function validateInput($data) {
 				<select id="race-select" name="id_race">
 					<?php 
                     // get all values from prj.rasa 
-                    $racesQuery = $pdo->query("SELECT id, nazwa FROM prj.rasa");
-		            foreach ($racesQuery as $race){
-						echo "<option value=\"" . $race["id"] . "\">" . $race["nazwa"] . "</option>";
+					try{
+						$racesQuery = $pdo->query("SELECT id, nazwa FROM prj.rasa");
+						foreach ($racesQuery as $race){
+							echo "<option value=\"" . $race["id"] . "\">" . $race["nazwa"] . "</option>";
+						}
+					}catch(PDOException $e){
+						$sqlError = $sqlError . "<br>" . $e->getMessage();
 					}
                     ?>
                     <option value="volvo">Volvo</option>
@@ -135,9 +140,13 @@ function validateInput($data) {
 				<select id="class-select" name="id_class">
 					<?php 
 					// get all values from prj.klasa
-                    $classesQuery = $pdo->query("SELECT id, nazwa FROM prj.klasa");
-		            foreach ($classesQuery as $class){
-						echo "<option value=\"" . $class["id"] . "\">" . $class["nazwa"] . "</option>";
+					try{
+						$classesQuery = $pdo->query("SELECT id, nazwa FROM prj.klasa");
+						foreach ($classesQuery as $class){
+							echo "<option value=\"" . $class["id"] . "\">" . $class["nazwa"] . "</option>";
+						}
+					}catch(PDOException $e){
+						$sqlError = $sqlError . "<br>" . $e->getMessage();
 					}
                     ?>
 				</select><br>
