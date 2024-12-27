@@ -6,12 +6,10 @@ $sqlError = $error = "";
 
 $loggedIn = false;
 try{
-	$loggedIn = include "zalogowany.php";
-	echo "inside login? " . $loggedIn;
+	$loggedIn = loggedIn();
 }catch(PDOException $e){
 	$sqlError = $sqlError . "<br>" . $e->getMessage();
 }
-echo "outside login? " . $loggedIn;
 
 if(!$loggedIn){
 	$username = $password = "";

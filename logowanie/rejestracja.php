@@ -6,7 +6,7 @@ $sqlError = $error = "";
 
 $loggedIn = false;
 try{
-	$loggedIn = include "logowanie/zalogowany.php";
+	$loggedIn = loggedIn();
 }catch(PDOException $e){
 	$sqlError = $sqlError . "<br>" . $e->getMessage();
 }
