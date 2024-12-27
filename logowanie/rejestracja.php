@@ -1,6 +1,7 @@
 <?php 
 session_start(); 
 
+require "../database.php";
 $username = $surname = $password = $password_repeat = $id_race = $id_class = "";
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$username = validateInput($_POST["username"]);
@@ -13,7 +14,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 	$_SESSION["username"] = $username;
 	$_SESSION["password"] = $password;
 
-	require "../database.php";
 	$sqlError = $error = "";
 // check cookie if user is logged in
 	try{
