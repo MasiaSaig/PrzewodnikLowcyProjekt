@@ -126,10 +126,10 @@ function validateInput($data) {
 					<?php 
                     // get all values from prj.rasa 
 					try{
-						$racesQuery = $pdo->query("SELECT id, nazwa FROM prj.rasa");
+						$racesQuery = $pdo->query("SELECT id, nazwa FROM prj.rasa;");
 						if($racesQuery){
 							foreach ($racesQuery->fetchAll() as $race){
-								echo "<option value=\"" . $race["id"] . "\">" . $race["nazwa"] . "</option>";
+								echo "<option value='" . $race["id"] . "'>" . $race["nazwa"] . "</option>";
 							}
 						}else{
 							echo "No Data??!";
@@ -139,16 +139,15 @@ function validateInput($data) {
 						$sqlError = $sqlError . "<br>" . $e->getMessage();
 					}
                     ?>
-                    <option value="volvo">Volvo</option>
 				</select><br>
 				<p>Klasa</p>
 				<select id="class-select" name="id_class">
 					<?php 
 					// get all values from prj.klasa
 					try{
-						$classesQuery = $pdo->query("SELECT id, nazwa FROM prj.klasa");
+						$classesQuery = $pdo->query("SELECT id, nazwa FROM prj.klasa;");
 						foreach ($classesQuery as $class){
-							echo "<option value=\"" . $class["id"] . "\">" . $class["nazwa"] . "</option>";
+							echo "<option value='" . $class["id"] . "'>" . $class["nazwa"] . "</option>";
 						}
 					}catch(PDOException $e){
 						$sqlError = $sqlError . "<br>" . $e->getMessage();
