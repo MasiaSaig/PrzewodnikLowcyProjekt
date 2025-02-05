@@ -1,3 +1,4 @@
 @media screen and (max-width: 600px){
     #headerTitle { width: 110%; }
+    .centered-form { width: 100%; }
 }

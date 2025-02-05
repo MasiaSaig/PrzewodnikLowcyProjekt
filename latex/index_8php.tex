@@ -1,0 +1,54 @@
+\doxysection{index.\+php File Reference}
+\hypertarget{index_8php}{}\label{index_8php}\index{index.php@{index.php}}
+
+
+Starting view for hunter, mostly HTML file, that redirects to sections where user can see data, edit them and login or register.  
+
+
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{index_8php_ab3df865cc8c49abad8b9afa08cc19d44}{\$logged\+In}} = false
+\item 
+\mbox{\hyperlink{index_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}) \mbox{\hyperlink{index_8php_a4d15ad3a3e79bbaf310747f326954d1e}{else}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Starting view for hunter, mostly HTML file, that redirects to sections where user can see data, edit them and login or register. 
+
+This file includes necessary files which user may want to access, most of the stuff can be accessed from here. 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{index_8php_ab3df865cc8c49abad8b9afa08cc19d44}\index{index.php@{index.php}!\$loggedIn@{\$loggedIn}}
+\index{\$loggedIn@{\$loggedIn}!index.php@{index.php}}
+\doxysubsubsection{\texorpdfstring{\$loggedIn}{\$loggedIn}}
+{\footnotesize\ttfamily \label{index_8php_ab3df865cc8c49abad8b9afa08cc19d44} 
+\$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}} = false}
+
+\Hypertarget{index_8php_a4d15ad3a3e79bbaf310747f326954d1e}\index{index.php@{index.php}!else@{else}}
+\index{else@{else}!index.php@{index.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \label{index_8php_a4d15ad3a3e79bbaf310747f326954d1e} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(isset(\$\+\_\+\+GET\mbox{[}"{}page"{}\mbox{]})) else \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(isset( \$\+\_\+\+GET\mbox{[}"{}id\+\_\+guild"{}\mbox{]})) else \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(isset(\$\+\_\+\+GET\mbox{[}"{}id\+\_\+beast"{}\mbox{]})) else \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} (isset( \$\+\_\+\+GET\mbox{[} \textquotesingle{}id\+\_\+quest\textquotesingle{}\mbox{]})) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}<a\ href=\(\backslash\)"{}loging/login.php\(\backslash\)"{}>Logowanie</a>"{}}}
+
+\end{DoxyCode}
+\Hypertarget{index_8php_abe4cc9788f52e49485473dc699537388}\index{index.php@{index.php}!try@{try}}
+\index{try@{try}!index.php@{index.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{index_8php_abe4cc9788f52e49485473dc699537388} 
+try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{index_8php_ab3df865cc8c49abad8b9afa08cc19d44}{\$loggedIn}}\ =\ \mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{loggedIn}}()}
+
+\end{DoxyCode}

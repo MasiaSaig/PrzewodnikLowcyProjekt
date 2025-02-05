@@ -1,0 +1,62 @@
+\doxysection{sites/quest.php File Reference}
+\hypertarget{quest_8php}{}\label{quest_8php}\index{sites/quest.php@{sites/quest.php}}
+
+
+File where user can see data of a certain quest. All creatures to hunt, description, status, etc.  
+
+
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(!isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}id\+\_\+quest\textquotesingle{}\mbox{]})\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}!is\+\_\+numeric(\$\+\_\+\+GET\mbox{[}\textquotesingle{}id\+\_\+quest\textquotesingle{}\mbox{]})) \mbox{\hyperlink{quest_8php_a02361f802d15f199a70ef57bd4bb7ccc}{\$logged\+In\+As\+Quest\+Maker}} = false
+\item 
+\mbox{\hyperlink{quest_8php_a58c580ce7bc592051f0b03fee852a2d9}{try}}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$check\+Guild-\/$>$fetch\+Column()==0) \mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$guest\+Error\+ID) \mbox{\hyperlink{quest_8php_aae0cc21f51de5ad0379ae62b8784814e}{\$quest\+Error}} = "{}"{}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$quest\+Data\+Query==false) \mbox{\hyperlink{quest_8php_a5ccfda867598c3cc383fff299c926a89}{else}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File where user can see data of a certain quest. All creatures to hunt, description, status, etc. 
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{quest_8php_a02361f802d15f199a70ef57bd4bb7ccc}\index{quest.php@{quest.php}!\$loggedInAsQuestMaker@{\$loggedInAsQuestMaker}}
+\index{\$loggedInAsQuestMaker@{\$loggedInAsQuestMaker}!quest.php@{quest.php}}
+\doxysubsubsection{\texorpdfstring{\$loggedInAsQuestMaker}{\$loggedInAsQuestMaker}}
+{\footnotesize\ttfamily \label{quest_8php_a02361f802d15f199a70ef57bd4bb7ccc} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} (!isset( \$\+\_\+\+GET\mbox{[} \textquotesingle{}id\+\_\+quest\textquotesingle{}\mbox{]})\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}!is\+\_\+numeric( \$\+\_\+\+GET\mbox{[} \textquotesingle{}id\+\_\+quest\textquotesingle{}\mbox{]})) \$logged\+In\+As\+Quest\+Maker = false}
+
+\Hypertarget{quest_8php_aae0cc21f51de5ad0379ae62b8784814e}\index{quest.php@{quest.php}!\$questError@{\$questError}}
+\index{\$questError@{\$questError}!quest.php@{quest.php}}
+\doxysubsubsection{\texorpdfstring{\$questError}{\$questError}}
+{\footnotesize\ttfamily \label{quest_8php_aae0cc21f51de5ad0379ae62b8784814e} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$check\+Guild-\/$>$fetch\+Column()==0) \mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} ( \$guest\+Error\+ID) \$quest\+Error = "{}"{}}
+
+\Hypertarget{quest_8php_a5ccfda867598c3cc383fff299c926a89}\index{quest.php@{quest.php}!else@{else}}
+\index{else@{else}!quest.php@{quest.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \label{quest_8php_a5ccfda867598c3cc383fff299c926a89} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} ( \$quest\+Data\+Query==false) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \$quest\ =\ \$questDataQuery-\/>fetch()}
+
+\end{DoxyCode}
+\Hypertarget{quest_8php_a58c580ce7bc592051f0b03fee852a2d9}\index{quest.php@{quest.php}!try@{try}}
+\index{try@{try}!quest.php@{quest.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{quest_8php_a58c580ce7bc592051f0b03fee852a2d9} 
+\mbox{\hyperlink{index_8php_a4d15ad3a3e79bbaf310747f326954d1e}{else}} \mbox{\hyperlink{profile_quest_maker_8php_a40202efcc59dc7e7286115d93b7ca737}{foreach}}(\$get\+Beasts as \$beast) \mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}} (PDOException \$e) try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{bestiary_8php_a3c9c82d5c79eedabcf4397c9274cb755}{\$loggedInAsQuestMaker}}\ =\ \mbox{\hyperlink{database_8php_ada12a90ceef55031624e6bb258532e1c}{loggedInQuestMaker}}()}
+
+\end{DoxyCode}

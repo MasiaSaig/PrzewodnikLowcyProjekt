@@ -1,0 +1,316 @@
+\doxysection{profile.\+php File Reference}
+\hypertarget{profile_8php}{}\label{profile_8php}\index{profile.php@{profile.php}}
+
+
+This file a profile view of logged in hunter.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$\+\_\+\+SERVER\mbox{[}"{}REQUEST\+\_\+\+METHOD"{}\mbox{]}=="{}POST"{}) \mbox{\hyperlink{profile_8php_a4b28a2bbd592aae521010dc266df3b00}{accept\+Guild\+Invitation}} (\$id\+\_\+hunter)
+\item 
+\mbox{\hyperlink{profile_8php_a1c476228bdbeb3a3aa685c3f2439388e}{leave\+Guild}} (\$id\+\_\+hunter)
+\item 
+\mbox{\hyperlink{profile_8php_a800432093a48540d0fa67d04f107512b}{remove\+Group\+Member}} (\$id\+\_\+hunter\+\_\+to\+\_\+remove)
+\item 
+\mbox{\hyperlink{profile_8php_a28db965e6bb11889a2b5c94321aa4ba0}{accept\+Group\+Invitation}} (\$id\+\_\+hunter)
+\item 
+\mbox{\hyperlink{profile_8php_a67b1584d808e35101d0dcb7aa85ece65}{add\+New\+Group\+Member}} (\$id\+\_\+hunter, \$id\+\_\+group, \$new\+\_\+hunter\+\_\+name)
+\item 
+\mbox{\hyperlink{profile_8php_a378133673b4689a3fbab51c8bcae9c84}{create\+Hunter\+Group}} (\$id\+\_\+hunter, \&\$id\+\_\+group)
+\item 
+\mbox{\hyperlink{profile_8php_ab54fb6d0f58e8429694cd70cdd8413dd}{leave\+Hunter\+Group}} (\$id\+\_\+hunter, \&\$id\+\_\+group)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{profile_8php_ab3df865cc8c49abad8b9afa08cc19d44}{\$logged\+In}} = false
+\item 
+\mbox{\hyperlink{profile_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(! \$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}) \mbox{\hyperlink{profile_8php_ab43366d3c2324516226671d7917bab72}{\$id\+\_\+hunter}} = \$username = \$id\+\_\+race = \$id\+\_\+group = \$money = \$id\+\_\+class = "{}"{}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$user\+Data==false) \mbox{\hyperlink{profile_8php_a04e17d61471f0e20c2df1c3900a03258}{\$data}} = \$user\+Data-\/$>$fetch()
+\item 
+\mbox{\hyperlink{profile_8php_a0eb82aa5f81cf845de4b36cd653c42cf}{\$username}} = \$data\mbox{[}\textquotesingle{}imię\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{profile_8php_a5428b4f9c9e1a7dae3aa4b1dd79bedde}{\$id\+\_\+race}} = \$data\mbox{[}\textquotesingle{}id\+\_\+rasa\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{profile_8php_a7afd754a7fd05ddf15a8ad78197bcd51}{\$id\+\_\+group}} = \$data\mbox{[}\textquotesingle{}id\+\_\+grupa\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{profile_8php_aa46b1720cc9b7fa5f43feedd62a3d4db}{\$money}} = \$data\mbox{[}\textquotesingle{}pieniądze\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{profile_8php_aee95b97fc2d74834148cb01d7a021e2b}{\$id\+\_\+class}} = \$data\mbox{[}\textquotesingle{}id\+\_\+klasa\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{profile_8php_a3b2271ce8fb169b2447f44910cf62319}{\$group\+\_\+status}} = \$data\mbox{[}\textquotesingle{}grupa\+\_\+status\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{profile_8php_a5cf415ed27bb7b876b42dc75f5190fdc}{\$race\+Data}} = \$pdo-\/$>$prepare("{}SELECT nazwa FROM prj.\+rasa WHERE id=?"{})
+\item 
+\mbox{\hyperlink{profile_8php_a59ef57bf7aa1bcf69b885a89fe5f482d}{\$race}} = \$data\mbox{[}\textquotesingle{}nazwa\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{profile_8php_a86e5d08810717bb743c2cf504ebe5a8b}{\$class\+Data}} = \$pdo-\/$>$prepare("{}SELECT nazwa FROM prj.\+klasa WHERE id=?"{})
+\item 
+\mbox{\hyperlink{profile_8php_a252ba022809910ea710a068fc1bab657}{\$class}} = \$data\mbox{[}\textquotesingle{}nazwa\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{profile_8php_a62b3c96e5e715b144df90201e6df6510}{\$sql\+Error}} = \$error = \$remove\+Group\+Member\+Error = "{}"{}
+\item 
+\mbox{\hyperlink{profile_8php_a9bc52d2ab1804cfedc4310e2fa10dd48}{\$add\+Group\+Member\+Group\+Error}} = \$leave\+Group\+Error = \$accept\+Group\+Error = \$leave\+Guild\+Error = \$accept\+Guild\+Invite\+Error = "{}"{}
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_a40202efcc59dc7e7286115d93b7ca737}{foreach}}( \$quests\+Data as \$data) \mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}} (PDOException \$e)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file a profile view of logged in hunter. 
+
+Here hunter can see his data, quests, group, and guild, mostly everything he needs. Here he can also add new group members. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{profile_8php_a28db965e6bb11889a2b5c94321aa4ba0}\index{profile.php@{profile.php}!acceptGroupInvitation@{acceptGroupInvitation}}
+\index{acceptGroupInvitation@{acceptGroupInvitation}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{acceptGroupInvitation()}{acceptGroupInvitation()}}
+{\footnotesize\ttfamily \label{profile_8php_a28db965e6bb11889a2b5c94321aa4ba0} 
+accept\+Group\+Invitation (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter}{}\end{DoxyParamCaption})}
+
+Function that, accepts hunter\textquotesingle{}s group invitation.
+
+This function first, checks if hunter\textquotesingle{}s group status is \textquotesingle{}oczekuje\textquotesingle{}, meaning the hunter was invited and is waiting for acceptation. If hunter\textquotesingle{}s group status, meets predicted status, his status changes to \textquotesingle{}członek\textquotesingle{}. Also group quest is assigned to this hunter.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+hunter} & Currently logged in hunter\textquotesingle{}s ID, to accept his invitation. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return empty string on success, else return error message. 
+\end{DoxyReturn}
+\Hypertarget{profile_8php_a4b28a2bbd592aae521010dc266df3b00}\index{profile.php@{profile.php}!acceptGuildInvitation@{acceptGuildInvitation}}
+\index{acceptGuildInvitation@{acceptGuildInvitation}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{acceptGuildInvitation()}{acceptGuildInvitation()}}
+{\footnotesize\ttfamily \label{profile_8php_a4b28a2bbd592aae521010dc266df3b00} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$\+\_\+\+SERVER\mbox{[}"{}REQUEST\+\_\+\+METHOD"{}\mbox{]}=="{}POST"{}) accept\+Guild\+Invitation (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter}{}\end{DoxyParamCaption})}
+
+Function, that accepts invitation from guild.
+
+Function checks if hunter\textquotesingle{}s status is correct and then changes hunters guild status in prj.\+członkowie\+\_\+gildii to member of a guild.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+hunter} & ID of a currently logged in hunter, that wants to accept invitation to guild. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else return error message. 
+\end{DoxyReturn}
+\Hypertarget{profile_8php_a67b1584d808e35101d0dcb7aa85ece65}\index{profile.php@{profile.php}!addNewGroupMember@{addNewGroupMember}}
+\index{addNewGroupMember@{addNewGroupMember}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{addNewGroupMember()}{addNewGroupMember()}}
+{\footnotesize\ttfamily \label{profile_8php_a67b1584d808e35101d0dcb7aa85ece65} 
+add\+New\+Group\+Member (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter}{, }\item[{}]{\$id\+\_\+group}{, }\item[{}]{\$new\+\_\+hunter\+\_\+name}{}\end{DoxyParamCaption})}
+
+Function, that adds new hunter to group, by providing hunter\textquotesingle{}s name.
+
+Function first checks if hunter with provided id exists. Then checks if invited hunter has an active quest, if he does, he cannot be invited to group. Ofcourse, hunter thats already in a group also cannot be added. Next if group has already 3 members, you cannot add more.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+hunter} & Currently logged in hunter\textquotesingle{}s ID. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+group} & Currently logged in hunter\textquotesingle{}s groud ID. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+group} & New group member\textquotesingle{}s name.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return empty string on success, else return error message. 
+\end{DoxyReturn}
+\Hypertarget{profile_8php_a378133673b4689a3fbab51c8bcae9c84}\index{profile.php@{profile.php}!createHunterGroup@{createHunterGroup}}
+\index{createHunterGroup@{createHunterGroup}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{createHunterGroup()}{createHunterGroup()}}
+{\footnotesize\ttfamily \label{profile_8php_a378133673b4689a3fbab51c8bcae9c84} 
+create\+Hunter\+Group (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter}{, }\item[{\&}]{\$id\+\_\+group}{}\end{DoxyParamCaption})}
+
+Function, that creates new group for hunters.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+hunter} & Hunter\textquotesingle{}s ID. \\
+\hline
+\mbox{\texttt{ out}}  & {\em \$id\+\_\+group} & If group creation was a success, this variable will hold new group\textquotesingle{}s ID.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return empty string on success, else return error message. 
+\end{DoxyReturn}
+\Hypertarget{profile_8php_a1c476228bdbeb3a3aa685c3f2439388e}\index{profile.php@{profile.php}!leaveGuild@{leaveGuild}}
+\index{leaveGuild@{leaveGuild}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{leaveGuild()}{leaveGuild()}}
+{\footnotesize\ttfamily \label{profile_8php_a1c476228bdbeb3a3aa685c3f2439388e} 
+leave\+Guild (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter}{}\end{DoxyParamCaption})}
+
+Function, that allows a hunter to leave guild.
+
+Function checks if hunter is a creator of a guild. If he is, leaving guild would remove all other members and delete guild.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+hunter} & ID of a currently logged in hunter, that wants to leave group.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else return error message. 
+\end{DoxyReturn}
+\Hypertarget{profile_8php_ab54fb6d0f58e8429694cd70cdd8413dd}\index{profile.php@{profile.php}!leaveHunterGroup@{leaveHunterGroup}}
+\index{leaveHunterGroup@{leaveHunterGroup}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{leaveHunterGroup()}{leaveHunterGroup()}}
+{\footnotesize\ttfamily \label{profile_8php_ab54fb6d0f58e8429694cd70cdd8413dd} 
+leave\+Hunter\+Group (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter}{, }\item[{\&}]{\$id\+\_\+group}{}\end{DoxyParamCaption})}
+
+Function that removes hunter from group.
+
+It sets hunters group ID and status to NULLs and if there are some other members left in group, this function creates new group with other member\textquotesingle{}s ID and assigns to it, all the other members except the one, leaving this group ofcourse. Also only if there are other members of group, remove hunter from this group\textquotesingle{}s quest.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+hunter} & Hunter\textquotesingle{}s ID. \\
+\hline
+\mbox{\texttt{ out}}  & {\em \$id\+\_\+group} & If leaving group was a success, change this local variable to 0.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+If there was any error, return its error message, else return empty string. 
+\end{DoxyReturn}
+\Hypertarget{profile_8php_a800432093a48540d0fa67d04f107512b}\index{profile.php@{profile.php}!removeGroupMember@{removeGroupMember}}
+\index{removeGroupMember@{removeGroupMember}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{removeGroupMember()}{removeGroupMember()}}
+{\footnotesize\ttfamily \label{profile_8php_a800432093a48540d0fa67d04f107512b} 
+remove\+Group\+Member (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter\+\_\+to\+\_\+remove}{}\end{DoxyParamCaption})}
+
+Function that removes hunter with given id, from group.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+hunter\+\_\+to\+\_\+remove} & ID of a hunter, to be removed from a group. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return empty string on success, else return error message. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{profile_8php_a9bc52d2ab1804cfedc4310e2fa10dd48}\index{profile.php@{profile.php}!\$addGroupMemberGroupError@{\$addGroupMemberGroupError}}
+\index{\$addGroupMemberGroupError@{\$addGroupMemberGroupError}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$addGroupMemberGroupError}{\$addGroupMemberGroupError}}
+{\footnotesize\ttfamily \label{profile_8php_a9bc52d2ab1804cfedc4310e2fa10dd48} 
+\$add\+Group\+Member\+Group\+Error = \$leave\+Group\+Error = \$accept\+Group\+Error = \$leave\+Guild\+Error = \$accept\+Guild\+Invite\+Error = "{}"{}}
+
+\Hypertarget{profile_8php_a252ba022809910ea710a068fc1bab657}\index{profile.php@{profile.php}!\$class@{\$class}}
+\index{\$class@{\$class}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$class}{\$class}}
+{\footnotesize\ttfamily \label{profile_8php_a252ba022809910ea710a068fc1bab657} 
+\$class = \$data\mbox{[}\textquotesingle{}nazwa\textquotesingle{}\mbox{]}}
+
+\Hypertarget{profile_8php_a86e5d08810717bb743c2cf504ebe5a8b}\index{profile.php@{profile.php}!\$classData@{\$classData}}
+\index{\$classData@{\$classData}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$classData}{\$classData}}
+{\footnotesize\ttfamily \label{profile_8php_a86e5d08810717bb743c2cf504ebe5a8b} 
+\$class\+Data = \$pdo-\/$>$prepare("{}SELECT nazwa FROM prj.\+klasa WHERE id=?"{})}
+
+\Hypertarget{profile_8php_a04e17d61471f0e20c2df1c3900a03258}\index{profile.php@{profile.php}!\$data@{\$data}}
+\index{\$data@{\$data}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$data}{\$data}}
+{\footnotesize\ttfamily \label{profile_8php_a04e17d61471f0e20c2df1c3900a03258} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} ( \$guild\+Data==false) \$data = \$user\+Data-\/$>$fetch()}
+
+\Hypertarget{profile_8php_a3b2271ce8fb169b2447f44910cf62319}\index{profile.php@{profile.php}!\$group\_status@{\$group\_status}}
+\index{\$group\_status@{\$group\_status}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$group\_status}{\$group\_status}}
+{\footnotesize\ttfamily \label{profile_8php_a3b2271ce8fb169b2447f44910cf62319} 
+\$group\+\_\+status = \$data\mbox{[}\textquotesingle{}grupa\+\_\+status\textquotesingle{}\mbox{]}}
+
+\Hypertarget{profile_8php_aee95b97fc2d74834148cb01d7a021e2b}\index{profile.php@{profile.php}!\$id\_class@{\$id\_class}}
+\index{\$id\_class@{\$id\_class}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$id\_class}{\$id\_class}}
+{\footnotesize\ttfamily \label{profile_8php_aee95b97fc2d74834148cb01d7a021e2b} 
+\$id\+\_\+class = \$data\mbox{[}\textquotesingle{}id\+\_\+klasa\textquotesingle{}\mbox{]}}
+
+\Hypertarget{profile_8php_a7afd754a7fd05ddf15a8ad78197bcd51}\index{profile.php@{profile.php}!\$id\_group@{\$id\_group}}
+\index{\$id\_group@{\$id\_group}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$id\_group}{\$id\_group}}
+{\footnotesize\ttfamily \label{profile_8php_a7afd754a7fd05ddf15a8ad78197bcd51} 
+\$id\+\_\+group = \$data\mbox{[}\textquotesingle{}id\+\_\+grupa\textquotesingle{}\mbox{]}}
+
+\Hypertarget{profile_8php_ab43366d3c2324516226671d7917bab72}\index{profile.php@{profile.php}!\$id\_hunter@{\$id\_hunter}}
+\index{\$id\_hunter@{\$id\_hunter}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$id\_hunter}{\$id\_hunter}}
+{\footnotesize\ttfamily \label{profile_8php_ab43366d3c2324516226671d7917bab72} 
+\$id\+\_\+hunter = \$username = \$id\+\_\+race = \$id\+\_\+group = \$money = \$id\+\_\+class = "{}"{}}
+
+\Hypertarget{profile_8php_a5428b4f9c9e1a7dae3aa4b1dd79bedde}\index{profile.php@{profile.php}!\$id\_race@{\$id\_race}}
+\index{\$id\_race@{\$id\_race}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$id\_race}{\$id\_race}}
+{\footnotesize\ttfamily \label{profile_8php_a5428b4f9c9e1a7dae3aa4b1dd79bedde} 
+\$id\+\_\+race = \$data\mbox{[}\textquotesingle{}id\+\_\+rasa\textquotesingle{}\mbox{]}}
+
+\Hypertarget{profile_8php_ab3df865cc8c49abad8b9afa08cc19d44}\index{profile.php@{profile.php}!\$loggedIn@{\$loggedIn}}
+\index{\$loggedIn@{\$loggedIn}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$loggedIn}{\$loggedIn}}
+{\footnotesize\ttfamily \label{profile_8php_ab3df865cc8c49abad8b9afa08cc19d44} 
+\$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}} = false}
+
+\Hypertarget{profile_8php_aa46b1720cc9b7fa5f43feedd62a3d4db}\index{profile.php@{profile.php}!\$money@{\$money}}
+\index{\$money@{\$money}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$money}{\$money}}
+{\footnotesize\ttfamily \label{profile_8php_aa46b1720cc9b7fa5f43feedd62a3d4db} 
+\$money = \$data\mbox{[}\textquotesingle{}pieniądze\textquotesingle{}\mbox{]}}
+
+\Hypertarget{profile_8php_a59ef57bf7aa1bcf69b885a89fe5f482d}\index{profile.php@{profile.php}!\$race@{\$race}}
+\index{\$race@{\$race}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$race}{\$race}}
+{\footnotesize\ttfamily \label{profile_8php_a59ef57bf7aa1bcf69b885a89fe5f482d} 
+\$race = \$data\mbox{[}\textquotesingle{}nazwa\textquotesingle{}\mbox{]}}
+
+\Hypertarget{profile_8php_a5cf415ed27bb7b876b42dc75f5190fdc}\index{profile.php@{profile.php}!\$raceData@{\$raceData}}
+\index{\$raceData@{\$raceData}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$raceData}{\$raceData}}
+{\footnotesize\ttfamily \label{profile_8php_a5cf415ed27bb7b876b42dc75f5190fdc} 
+\$race\+Data = \$pdo-\/$>$prepare("{}SELECT nazwa FROM prj.\+rasa WHERE id=?"{})}
+
+\Hypertarget{profile_8php_a62b3c96e5e715b144df90201e6df6510}\index{profile.php@{profile.php}!\$sqlError@{\$sqlError}}
+\index{\$sqlError@{\$sqlError}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$sqlError}{\$sqlError}}
+{\footnotesize\ttfamily \label{profile_8php_a62b3c96e5e715b144df90201e6df6510} 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}} (PDOException \$e) \$sql\+Error = \$error = \$remove\+Group\+Member\+Error = "{}"{}}
+
+\Hypertarget{profile_8php_a0eb82aa5f81cf845de4b36cd653c42cf}\index{profile.php@{profile.php}!\$username@{\$username}}
+\index{\$username@{\$username}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{\$username}{\$username}}
+{\footnotesize\ttfamily \label{profile_8php_a0eb82aa5f81cf845de4b36cd653c42cf} 
+\$username = \$data\mbox{[}\textquotesingle{}imię\textquotesingle{}\mbox{]}}
+
+\Hypertarget{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}\index{profile.php@{profile.php}!catch@{catch}}
+\index{catch@{catch}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{catch}{catch}}
+{\footnotesize\ttfamily \label{profile_8php_aed41528b3f9462f36e85f397ac2c64b5} 
+catch (\begin{DoxyParamCaption}\item[{PDOException}]{\$e}{}\end{DoxyParamCaption})}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \$classesQuery\ =\ \mbox{\hyperlink{database_8php_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}}-\/>query(\textcolor{stringliteral}{"{}SELECT\ id,\ nazwa\ FROM\ prj.klasa;"{}})}
+
+\end{DoxyCode}
+\Hypertarget{profile_8php_abe4cc9788f52e49485473dc699537388}\index{profile.php@{profile.php}!try@{try}}
+\index{try@{try}!profile.php@{profile.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{profile_8php_abe4cc9788f52e49485473dc699537388} 
+try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{index_8php_ab3df865cc8c49abad8b9afa08cc19d44}{\$loggedIn}}\ =\ \mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{loggedIn}}()}
+
+\end{DoxyCode}

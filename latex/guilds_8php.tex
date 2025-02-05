@@ -1,0 +1,68 @@
+\doxysection{sites/guilds.php File Reference}
+\hypertarget{guilds_8php}{}\label{guilds_8php}\index{sites/guilds.php@{sites/guilds.php}}
+
+
+File where user can see data of a all guilds. Here hunters can also create their own guilds.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_a40202efcc59dc7e7286115d93b7ca737}{foreach}}(\$guilds\+Query as \$guild) \mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{guilds_8php_ad58d60f83ddd69e6453657e530cbe5ec}{create\+Guild}} (\$id\+\_\+hunter, \$guild\+Name)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{guilds_8php_aa023e2d26e375efcf4e2070b62e36548}{\$error\+Guild}} = "{}"{}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}==true) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$error\+Guild !="{}"{}) \mbox{\hyperlink{guilds_8php_a59a4074b4d001d1cb2daab0be93f8605}{try}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File where user can see data of a all guilds. Here hunters can also create their own guilds. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{guilds_8php_ad58d60f83ddd69e6453657e530cbe5ec}\index{guilds.php@{guilds.php}!createGuild@{createGuild}}
+\index{createGuild@{createGuild}!guilds.php@{guilds.php}}
+\doxysubsubsection{\texorpdfstring{createGuild()}{createGuild()}}
+{\footnotesize\ttfamily \label{guilds_8php_ad58d60f83ddd69e6453657e530cbe5ec} 
+\mbox{\hyperlink{profile_quest_maker_8php_a40202efcc59dc7e7286115d93b7ca737}{foreach}}( \$guilds\+Query as \$guild) \mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) create\+Guild (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter}{, }\item[{}]{\$guild\+Name}{}\end{DoxyParamCaption})}
+
+Function that creates new guild and assigns hunter as guilds creator.
+
+This function checks if hunter is already in guild. If he is, he cannot create new guild. If also, checks if given name is unique for guild, next creates guild, assigns new id, finally assign hunter as creator of a guild, with special privilages.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+hunter} & ID of a hunter, which wants to create a guild. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$guild\+Name} & Name of a new guild. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else return error message. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{guilds_8php_aa023e2d26e375efcf4e2070b62e36548}\index{guilds.php@{guilds.php}!\$errorGuild@{\$errorGuild}}
+\index{\$errorGuild@{\$errorGuild}!guilds.php@{guilds.php}}
+\doxysubsubsection{\texorpdfstring{\$errorGuild}{\$errorGuild}}
+{\footnotesize\ttfamily \label{guilds_8php_aa023e2d26e375efcf4e2070b62e36548} 
+\$error\+Guild = "{}"{}}
+
+\Hypertarget{guilds_8php_a59a4074b4d001d1cb2daab0be93f8605}\index{guilds.php@{guilds.php}!try@{try}}
+\index{try@{try}!guilds.php@{guilds.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{guilds_8php_a59a4074b4d001d1cb2daab0be93f8605} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}==true) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} ( \$error\+Guild !="{}"{}) try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \$guildsQuery\ =\ \mbox{\hyperlink{database_8php_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}}-\/>query(\textcolor{stringliteral}{"{}SELECT\ g.id,\ g.nazwa,\ (SELECT\ SUM((SELECT\ SUM(pieniądze)\ FROM\ prj.łowca\ WHERE\ id=cg.id\_łowca\ AND\ cg.status<>'oczekuje'))\ FROM\ prj.członkowie\_gildii\ cg\ WHERE\ id\_gildia=g.id)\ AS\ prize\_pool\ FROM\ prj.gildia\ g\ ORDER\ BY\ prize\_pool"{}})}
+
+\end{DoxyCode}

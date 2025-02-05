@@ -1,0 +1,27 @@
+var profile_8php =
+[
+    [ "acceptGroupInvitation", "profile_8php.html#a28db965e6bb11889a2b5c94321aa4ba0", null ],
+    [ "acceptGuildInvitation", "profile_8php.html#a4b28a2bbd592aae521010dc266df3b00", null ],
+    [ "addNewGroupMember", "profile_8php.html#a67b1584d808e35101d0dcb7aa85ece65", null ],
+    [ "createHunterGroup", "profile_8php.html#a378133673b4689a3fbab51c8bcae9c84", null ],
+    [ "leaveGuild", "profile_8php.html#a1c476228bdbeb3a3aa685c3f2439388e", null ],
+    [ "leaveHunterGroup", "profile_8php.html#ab54fb6d0f58e8429694cd70cdd8413dd", null ],
+    [ "removeGroupMember", "profile_8php.html#a800432093a48540d0fa67d04f107512b", null ],
+    [ "$addGroupMemberGroupError", "profile_8php.html#a9bc52d2ab1804cfedc4310e2fa10dd48", null ],
+    [ "$class", "profile_8php.html#a252ba022809910ea710a068fc1bab657", null ],
+    [ "$classData", "profile_8php.html#a86e5d08810717bb743c2cf504ebe5a8b", null ],
+    [ "$data", "profile_8php.html#a04e17d61471f0e20c2df1c3900a03258", null ],
+    [ "$group_status", "profile_8php.html#a3b2271ce8fb169b2447f44910cf62319", null ],
+    [ "$id_class", "profile_8php.html#aee95b97fc2d74834148cb01d7a021e2b", null ],
+    [ "$id_group", "profile_8php.html#a7afd754a7fd05ddf15a8ad78197bcd51", null ],
+    [ "$id_hunter", "profile_8php.html#ab43366d3c2324516226671d7917bab72", null ],
+    [ "$id_race", "profile_8php.html#a5428b4f9c9e1a7dae3aa4b1dd79bedde", null ],
+    [ "$loggedIn", "profile_8php.html#ab3df865cc8c49abad8b9afa08cc19d44", null ],
+    [ "$money", "profile_8php.html#aa46b1720cc9b7fa5f43feedd62a3d4db", null ],
+    [ "$race", "profile_8php.html#a59ef57bf7aa1bcf69b885a89fe5f482d", null ],
+    [ "$raceData", "profile_8php.html#a5cf415ed27bb7b876b42dc75f5190fdc", null ],
+    [ "$sqlError", "profile_8php.html#a62b3c96e5e715b144df90201e6df6510", null ],
+    [ "$username", "profile_8php.html#a0eb82aa5f81cf845de4b36cd653c42cf", null ],
+    [ "catch", "profile_8php.html#aed41528b3f9462f36e85f397ac2c64b5", null ],
+    [ "try", "profile_8php.html#abe4cc9788f52e49485473dc699537388", null ]
+];

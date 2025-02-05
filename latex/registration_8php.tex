@@ -1,0 +1,109 @@
+\doxysection{loging/registration.php File Reference}
+\hypertarget{registration_8php}{}\label{registration_8php}\index{loging/registration.php@{loging/registration.php}}
+
+
+This file is registrating new user, either Hunter or Quest Maker.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{registration_8php_afceb98f0c74091fbb691b65238ba2cda}{register\+Hunter}} (\$username, \$password, \$password\+\_\+repeat, \$id\+\_\+race, \$id\+\_\+class)
+\item 
+\mbox{\hyperlink{registration_8php_a4a9b53db259a664b132fa20accba0c1e}{validate\+Hunter\+Name}} (\$username)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{registration_8php_aefe5be08b0d022c2ffa233622185628b}{\$sql\+Error}} = \$error = "{}"{}
+\item 
+\mbox{\hyperlink{registration_8php_ab3df865cc8c49abad8b9afa08cc19d44}{\$logged\+In}} = false
+\item 
+\mbox{\hyperlink{registration_8php_a3d12b343d049cdea93240f06b0e8467c}{try}}
+\item 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(! \$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}) \mbox{\hyperlink{registration_8php_a515aba875e0a30cf401caa46fa8893f3}{else}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file is registrating new user, either Hunter or Quest Maker. 
+
+This file consists of form that can create new users. It validates all fields and can redirect to login file. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{registration_8php_afceb98f0c74091fbb691b65238ba2cda}\index{registration.php@{registration.php}!registerHunter@{registerHunter}}
+\index{registerHunter@{registerHunter}!registration.php@{registration.php}}
+\doxysubsubsection{\texorpdfstring{registerHunter()}{registerHunter()}}
+{\footnotesize\ttfamily \label{registration_8php_afceb98f0c74091fbb691b65238ba2cda} 
+register\+Hunter (\begin{DoxyParamCaption}\item[{}]{\$username}{, }\item[{}]{\$password}{, }\item[{}]{\$password\+\_\+repeat}{, }\item[{}]{\$id\+\_\+race}{, }\item[{}]{\$id\+\_\+class}{}\end{DoxyParamCaption})}
+
+Function that creates new hunter
+
+If username or password are empty, hunter cannot be created. Next username must be unique for a hunter. After that id\+\_\+race and id\+\_\+class must exist in database. Only after all the checks hunter can be created.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$username} & Name of hunter. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$password} & Password of hunter. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$password\+\_\+repeat} & Repeated password, must be the same as \$password. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+race} & Race of a hunter. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+class} & Class of a hunter. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on successs, else return error message. 
+\end{DoxyReturn}
+\Hypertarget{registration_8php_a4a9b53db259a664b132fa20accba0c1e}\index{registration.php@{registration.php}!validateHunterName@{validateHunterName}}
+\index{validateHunterName@{validateHunterName}!registration.php@{registration.php}}
+\doxysubsubsection{\texorpdfstring{validateHunterName()}{validateHunterName()}}
+{\footnotesize\ttfamily \label{registration_8php_a4a9b53db259a664b132fa20accba0c1e} 
+validate\+Hunter\+Name (\begin{DoxyParamCaption}\item[{}]{\$username}{}\end{DoxyParamCaption})}
+
+Function checking if given username is unique and valid, for hunter.
+
+\begin{DoxyReturn}{Returns}
+Returns true if username is unique and valid, else return false. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{registration_8php_ab3df865cc8c49abad8b9afa08cc19d44}\index{registration.php@{registration.php}!\$loggedIn@{\$loggedIn}}
+\index{\$loggedIn@{\$loggedIn}!registration.php@{registration.php}}
+\doxysubsubsection{\texorpdfstring{\$loggedIn}{\$loggedIn}}
+{\footnotesize\ttfamily \label{registration_8php_ab3df865cc8c49abad8b9afa08cc19d44} 
+\$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}} = false}
+
+\Hypertarget{registration_8php_aefe5be08b0d022c2ffa233622185628b}\index{registration.php@{registration.php}!\$sqlError@{\$sqlError}}
+\index{\$sqlError@{\$sqlError}!registration.php@{registration.php}}
+\doxysubsubsection{\texorpdfstring{\$sqlError}{\$sqlError}}
+{\footnotesize\ttfamily \label{registration_8php_aefe5be08b0d022c2ffa233622185628b} 
+\$sql\+Error = \$error = "{}"{}}
+
+\Hypertarget{registration_8php_a515aba875e0a30cf401caa46fa8893f3}\index{registration.php@{registration.php}!else@{else}}
+\index{else@{else}!registration.php@{registration.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \label{registration_8php_a515aba875e0a30cf401caa46fa8893f3} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} ( \$classes\+Query) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ header(\textcolor{stringliteral}{"{}Location:\ http://pascal.fis.agh.edu.pl/\string~2mueller/index.php"{}})}
+
+\end{DoxyCode}
+\Hypertarget{registration_8php_a3d12b343d049cdea93240f06b0e8467c}\index{registration.php@{registration.php}!try@{try}}
+\index{try@{try}!registration.php@{registration.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{registration_8php_a3d12b343d049cdea93240f06b0e8467c} 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}} (PDOException \$e) try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{index_8php_ab3df865cc8c49abad8b9afa08cc19d44}{\$loggedIn}}\ =\ \mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{loggedIn}}()}
+
+\end{DoxyCode}

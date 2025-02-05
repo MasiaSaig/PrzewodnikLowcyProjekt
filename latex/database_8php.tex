@@ -1,0 +1,150 @@
+\doxysection{database.\+php File Reference}
+\hypertarget{database_8php}{}\label{database_8php}\index{database.php@{database.php}}
+
+
+This file connects to database and provides a few functions for form validation and checking if user is already logged in.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}} ()
+\item 
+\mbox{\hyperlink{database_8php_ada12a90ceef55031624e6bb258532e1c}{logged\+In\+Quest\+Maker}} ()
+\item 
+\mbox{\hyperlink{database_8php_ac48491b7446dd263736d1b7dc4aa28be}{check\+For\+Active\+Quest}} (\$id\+\_\+hunter)
+\item 
+\mbox{\hyperlink{database_8php_af2d487ad25b85fa0cb041948f69cb177}{validate\+Input}} (\$data)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{database_8php_ad0ddb2725e69c88a729e0cc242a1b2a6}{\$db\+Host}} = "{}pascal.\+fis.\+agh.\+edu.\+pl"{}
+\item 
+\mbox{\hyperlink{database_8php_a99190403b1a8a26d11f557a1f5f17569}{\$db\+Port}} = "{}5432"{}
+\item 
+\mbox{\hyperlink{database_8php_a68f39949e76b64662a06cb56579d91c3}{\$db\+Name}} = "{}u2mueller"{}
+\item 
+\mbox{\hyperlink{database_8php_a4a92606de85aafdc0dcae4976b7ca669}{\$db\+User}} = "{}u2mueller"{}
+\item 
+\mbox{\hyperlink{database_8php_a21bc2efa4855a9484c564803d4569a19}{\$db\+Password}} = "{}2mueller"{}
+\item 
+\mbox{\hyperlink{database_8php_ab8b596347099a6740799cff530658ae5}{\$db\+Dsn}} = "{}pgsql\+:host=\$db\+Host;dbname=\$db\+Name;user=\$db\+User;port=\$db\+Port;password=\$db\+Password;"{}
+\item 
+\mbox{\hyperlink{database_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{database_8php_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}} = new PDO(\$db\+Dsn)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file connects to database and provides a few functions for form validation and checking if user is already logged in. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{database_8php_ac48491b7446dd263736d1b7dc4aa28be}\index{database.php@{database.php}!checkForActiveQuest@{checkForActiveQuest}}
+\index{checkForActiveQuest@{checkForActiveQuest}!database.php@{database.php}}
+\doxysubsubsection{\texorpdfstring{checkForActiveQuest()}{checkForActiveQuest()}}
+{\footnotesize\ttfamily \label{database_8php_ac48491b7446dd263736d1b7dc4aa28be} 
+check\+For\+Active\+Quest (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter}{}\end{DoxyParamCaption})}
+
+Function checking if hunter has any active quest.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em id\+\_\+hunter} & ID of a hunter, to check.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Return true (1) if hunter has active quest, else return false (0). 
+\end{DoxyReturn}
+\Hypertarget{database_8php_a146eead26b1ca846b48359954ca40c80}\index{database.php@{database.php}!loggedIn@{loggedIn}}
+\index{loggedIn@{loggedIn}!database.php@{database.php}}
+\doxysubsubsection{\texorpdfstring{loggedIn()}{loggedIn()}}
+{\footnotesize\ttfamily \label{database_8php_a146eead26b1ca846b48359954ca40c80} 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) logged\+In (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Function checking if user, is logged in as Hunter.
+
+Function checks, if locally saved cookie auth\+Login\+Token, exists in database prj.\+łowca.
+
+\begin{DoxyReturn}{Returns}
+If user is logged in as Hunter, return his ID, else return false (zero). 
+\end{DoxyReturn}
+\Hypertarget{database_8php_ada12a90ceef55031624e6bb258532e1c}\index{database.php@{database.php}!loggedInQuestMaker@{loggedInQuestMaker}}
+\index{loggedInQuestMaker@{loggedInQuestMaker}!database.php@{database.php}}
+\doxysubsubsection{\texorpdfstring{loggedInQuestMaker()}{loggedInQuestMaker()}}
+{\footnotesize\ttfamily \label{database_8php_ada12a90ceef55031624e6bb258532e1c} 
+logged\+In\+Quest\+Maker (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+Function checking if user, is logged in as Quest Maker.
+
+Function checks, if locally saved cookie auth\+Login\+Quest\+Maker\+Token exists in database prj.\+zleceniodawca.
+
+\begin{DoxyReturn}{Returns}
+If user is logged in as Quest Maker, return his ID, else return false (zero). 
+\end{DoxyReturn}
+\Hypertarget{database_8php_af2d487ad25b85fa0cb041948f69cb177}\index{database.php@{database.php}!validateInput@{validateInput}}
+\index{validateInput@{validateInput}!database.php@{database.php}}
+\doxysubsubsection{\texorpdfstring{validateInput()}{validateInput()}}
+{\footnotesize\ttfamily \label{database_8php_af2d487ad25b85fa0cb041948f69cb177} 
+validate\+Input (\begin{DoxyParamCaption}\item[{}]{\$data}{}\end{DoxyParamCaption})}
+
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{database_8php_ab8b596347099a6740799cff530658ae5}\index{database.php@{database.php}!\$dbDsn@{\$dbDsn}}
+\index{\$dbDsn@{\$dbDsn}!database.php@{database.php}}
+\doxysubsubsection{\texorpdfstring{\$dbDsn}{\$dbDsn}}
+{\footnotesize\ttfamily \label{database_8php_ab8b596347099a6740799cff530658ae5} 
+\$db\+Dsn = "{}pgsql\+:host=\$db\+Host;dbname=\$db\+Name;user=\$db\+User;port=\$db\+Port;password=\$db\+Password;"{}}
+
+\Hypertarget{database_8php_ad0ddb2725e69c88a729e0cc242a1b2a6}\index{database.php@{database.php}!\$dbHost@{\$dbHost}}
+\index{\$dbHost@{\$dbHost}!database.php@{database.php}}
+\doxysubsubsection{\texorpdfstring{\$dbHost}{\$dbHost}}
+{\footnotesize\ttfamily \label{database_8php_ad0ddb2725e69c88a729e0cc242a1b2a6} 
+\$db\+Host = "{}pascal.\+fis.\+agh.\+edu.\+pl"{}}
+
+\Hypertarget{database_8php_a68f39949e76b64662a06cb56579d91c3}\index{database.php@{database.php}!\$dbName@{\$dbName}}
+\index{\$dbName@{\$dbName}!database.php@{database.php}}
+\doxysubsubsection{\texorpdfstring{\$dbName}{\$dbName}}
+{\footnotesize\ttfamily \label{database_8php_a68f39949e76b64662a06cb56579d91c3} 
+\$db\+Name = "{}u2mueller"{}}
+
+\Hypertarget{database_8php_a21bc2efa4855a9484c564803d4569a19}\index{database.php@{database.php}!\$dbPassword@{\$dbPassword}}
+\index{\$dbPassword@{\$dbPassword}!database.php@{database.php}}
+\doxysubsubsection{\texorpdfstring{\$dbPassword}{\$dbPassword}}
+{\footnotesize\ttfamily \label{database_8php_a21bc2efa4855a9484c564803d4569a19} 
+\$db\+Password = "{}2mueller"{}}
+
+\Hypertarget{database_8php_a99190403b1a8a26d11f557a1f5f17569}\index{database.php@{database.php}!\$dbPort@{\$dbPort}}
+\index{\$dbPort@{\$dbPort}!database.php@{database.php}}
+\doxysubsubsection{\texorpdfstring{\$dbPort}{\$dbPort}}
+{\footnotesize\ttfamily \label{database_8php_a99190403b1a8a26d11f557a1f5f17569} 
+\$db\+Port = "{}5432"{}}
+
+\Hypertarget{database_8php_a4a92606de85aafdc0dcae4976b7ca669}\index{database.php@{database.php}!\$dbUser@{\$dbUser}}
+\index{\$dbUser@{\$dbUser}!database.php@{database.php}}
+\doxysubsubsection{\texorpdfstring{\$dbUser}{\$dbUser}}
+{\footnotesize\ttfamily \label{database_8php_a4a92606de85aafdc0dcae4976b7ca669} 
+\$db\+User = "{}u2mueller"{}}
+
+\Hypertarget{database_8php_a5766efd703cef0e00bfc06b3f3acbe0e}\index{database.php@{database.php}!\$pdo@{\$pdo}}
+\index{\$pdo@{\$pdo}!database.php@{database.php}}
+\doxysubsubsection{\texorpdfstring{\$pdo}{\$pdo}}
+{\footnotesize\ttfamily \label{database_8php_a5766efd703cef0e00bfc06b3f3acbe0e} 
+\$pdo = new PDO(\$db\+Dsn)}
+
+\Hypertarget{database_8php_abe4cc9788f52e49485473dc699537388}\index{database.php@{database.php}!try@{try}}
+\index{try@{try}!database.php@{database.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{database_8php_abe4cc9788f52e49485473dc699537388} 
+try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(!session\_id())\ session\_start()}
+
+\end{DoxyCode}

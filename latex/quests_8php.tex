@@ -1,0 +1,102 @@
+\doxysection{sites/quests.php File Reference}
+\hypertarget{quests_8php}{}\label{quests_8php}\index{sites/quests.php@{sites/quests.php}}
+
+
+File where user can see data of a all available quests, that a hunter can assign to itself. Only hunters can see this section.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$\+\_\+\+SERVER\mbox{[}"{}REQUEST\+\_\+\+METHOD"{}\mbox{]}=="{}POST"{}) \mbox{\hyperlink{quests_8php_ac5cbd0aa67f329765ee522e179e6f4e1}{assign\+Quest}} (\$id\+\_\+hunter, \$id\+\_\+group, \$id\+\_\+quest)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}==false) \mbox{\hyperlink{quests_8php_a7afd754a7fd05ddf15a8ad78197bcd51}{\$id\+\_\+group}} = \$id\+\_\+hunter = "{}"{}
+\item 
+\mbox{\hyperlink{quests_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{quests_8php_ab764038dde3f709a194dc1c73a62b5b2}{\$hunter\+Data}} = \$hunter\+Id\+Query-\/$>$fetch()
+\item 
+\mbox{\hyperlink{quests_8php_ab43366d3c2324516226671d7917bab72}{\$id\+\_\+hunter}} = \$hunter\+Data\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{quests_8php_a42a46da6abf8d1434bed5dd4e3c71e29}{catch}} (PDOException \$e)
+\item 
+\mbox{\hyperlink{quests_8php_a55a19b2c793cd5c80f1d292f139287f0}{\$quest\+Error}} = "{}"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File where user can see data of a all available quests, that a hunter can assign to itself. Only hunters can see this section. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{quests_8php_ac5cbd0aa67f329765ee522e179e6f4e1}\index{quests.php@{quests.php}!assignQuest@{assignQuest}}
+\index{assignQuest@{assignQuest}!quests.php@{quests.php}}
+\doxysubsubsection{\texorpdfstring{assignQuest()}{assignQuest()}}
+{\footnotesize\ttfamily \label{quests_8php_ac5cbd0aa67f329765ee522e179e6f4e1} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$\+\_\+\+SERVER\mbox{[}"{}REQUEST\+\_\+\+METHOD"{}\mbox{]}=="{}POST"{}) assign\+Quest (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter}{, }\item[{}]{\$id\+\_\+group}{, }\item[{}]{\$id\+\_\+quest}{}\end{DoxyParamCaption})}
+
+Function that allows hunter to assign quest to him or his group.
+
+Function before assigning checks if there are some hunters waiting to join his group, if there are he cannot assign quest.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+hunter} & ID of a hunter that tries to assign quest. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+group} & ID of hunters group. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+quest} & ID of a quest, a hunter tries to assign.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else return error message. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{quests_8php_ab764038dde3f709a194dc1c73a62b5b2}\index{quests.php@{quests.php}!\$hunterData@{\$hunterData}}
+\index{\$hunterData@{\$hunterData}!quests.php@{quests.php}}
+\doxysubsubsection{\texorpdfstring{\$hunterData}{\$hunterData}}
+{\footnotesize\ttfamily \label{quests_8php_ab764038dde3f709a194dc1c73a62b5b2} 
+\$hunter\+Data = \$hunter\+Id\+Query-\/$>$fetch()}
+
+\Hypertarget{quests_8php_a7afd754a7fd05ddf15a8ad78197bcd51}\index{quests.php@{quests.php}!\$id\_group@{\$id\_group}}
+\index{\$id\_group@{\$id\_group}!quests.php@{quests.php}}
+\doxysubsubsection{\texorpdfstring{\$id\_group}{\$id\_group}}
+{\footnotesize\ttfamily \label{quests_8php_a7afd754a7fd05ddf15a8ad78197bcd51} 
+\$id\+\_\+group = \$id\+\_\+hunter = "{}"{}}
+
+\Hypertarget{quests_8php_ab43366d3c2324516226671d7917bab72}\index{quests.php@{quests.php}!\$id\_hunter@{\$id\_hunter}}
+\index{\$id\_hunter@{\$id\_hunter}!quests.php@{quests.php}}
+\doxysubsubsection{\texorpdfstring{\$id\_hunter}{\$id\_hunter}}
+{\footnotesize\ttfamily \label{quests_8php_ab43366d3c2324516226671d7917bab72} 
+\$id\+\_\+hunter = \$hunter\+Data\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]}}
+
+\Hypertarget{quests_8php_a55a19b2c793cd5c80f1d292f139287f0}\index{quests.php@{quests.php}!\$questError@{\$questError}}
+\index{\$questError@{\$questError}!quests.php@{quests.php}}
+\doxysubsubsection{\texorpdfstring{\$questError}{\$questError}}
+{\footnotesize\ttfamily \label{quests_8php_a55a19b2c793cd5c80f1d292f139287f0} 
+\$quest\+Error = "{}"{}}
+
+\Hypertarget{quests_8php_a42a46da6abf8d1434bed5dd4e3c71e29}\index{quests.php@{quests.php}!catch@{catch}}
+\index{catch@{catch}!quests.php@{quests.php}}
+\doxysubsubsection{\texorpdfstring{catch}{catch}}
+{\footnotesize\ttfamily \label{quests_8php_a42a46da6abf8d1434bed5dd4e3c71e29} 
+\mbox{\hyperlink{profile_quest_maker_8php_a40202efcc59dc7e7286115d93b7ca737}{foreach}}(\$quests\+Query as \$quest) catch(PDOException \$e) (\begin{DoxyParamCaption}\item[{PDOException}]{\$e}{}\end{DoxyParamCaption})}
+
+\Hypertarget{quests_8php_abe4cc9788f52e49485473dc699537388}\index{quests.php@{quests.php}!try@{try}}
+\index{try@{try}!quests.php@{quests.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{quests_8php_abe4cc9788f52e49485473dc699537388} 
+try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \$hunterIdQuery\ =\ \mbox{\hyperlink{database_8php_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{"{}SELECT\ id,\ id\_grupa\ FROM\ prj.łowca\ WHERE\ token\_autoryzacji=:authLoginCookie"{}})}
+
+\end{DoxyCode}

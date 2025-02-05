@@ -1,0 +1,54 @@
+\doxysection{quest\+Maker.\+php File Reference}
+\hypertarget{quest_maker_8php}{}\label{quest_maker_8php}\index{questMaker.php@{questMaker.php}}
+
+
+Starting view for Quest Maker, mostly HTML file, that redirects to sections where user can see data, after being logged in as quest maker.  
+
+
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{quest_maker_8php_ab3df865cc8c49abad8b9afa08cc19d44}{\$logged\+In}} = false
+\item 
+\mbox{\hyperlink{quest_maker_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}==false) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(isset(\$\+\_\+\+GET\mbox{[}"{}page"{}\mbox{]})) else \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(isset( \$\+\_\+\+GET\mbox{[}"{}id\+\_\+beast"{}\mbox{]})) else \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}id\+\_\+quest\textquotesingle{}\mbox{]})) \mbox{\hyperlink{quest_maker_8php_ac86ab6973307ca2026109325c1a7cb4d}{else}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Starting view for Quest Maker, mostly HTML file, that redirects to sections where user can see data, after being logged in as quest maker. 
+
+This file includes necessary files which user may want to access, most of the stuff can be accessed from here. 
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{quest_maker_8php_ab3df865cc8c49abad8b9afa08cc19d44}\index{questMaker.php@{questMaker.php}!\$loggedIn@{\$loggedIn}}
+\index{\$loggedIn@{\$loggedIn}!questMaker.php@{questMaker.php}}
+\doxysubsubsection{\texorpdfstring{\$loggedIn}{\$loggedIn}}
+{\footnotesize\ttfamily \label{quest_maker_8php_ab3df865cc8c49abad8b9afa08cc19d44} 
+\$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}} = false}
+
+\Hypertarget{quest_maker_8php_ac86ab6973307ca2026109325c1a7cb4d}\index{questMaker.php@{questMaker.php}!else@{else}}
+\index{else@{else}!questMaker.php@{questMaker.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \label{quest_maker_8php_ac86ab6973307ca2026109325c1a7cb4d} 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}==false) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(isset( \$\+\_\+\+GET\mbox{[}"{}page"{}\mbox{]})) else \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(isset(\$\+\_\+\+GET\mbox{[}"{}id\+\_\+beast"{}\mbox{]})) else \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} (isset( \$\+\_\+\+GET\mbox{[} \textquotesingle{}id\+\_\+quest\textquotesingle{}\mbox{]})) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ include\ \textcolor{stringliteral}{"{}home.php"{}}}
+
+\end{DoxyCode}
+\Hypertarget{quest_maker_8php_abe4cc9788f52e49485473dc699537388}\index{questMaker.php@{questMaker.php}!try@{try}}
+\index{try@{try}!questMaker.php@{questMaker.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{quest_maker_8php_abe4cc9788f52e49485473dc699537388} 
+try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{index_8php_ab3df865cc8c49abad8b9afa08cc19d44}{\$loggedIn}}\ =\ \mbox{\hyperlink{database_8php_ada12a90ceef55031624e6bb258532e1c}{loggedInQuestMaker}}()}
+
+\end{DoxyCode}

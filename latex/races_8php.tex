@@ -1,0 +1,84 @@
+\doxysection{sites/races.php File Reference}
+\hypertarget{races_8php}{}\label{races_8php}\index{sites/races.php@{sites/races.php}}
+
+
+File where user can see data of a all races that are available in database. Both hunters and creatures races.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$\+\_\+\+SERVER\mbox{[}"{}REQUEST\+\_\+\+METHOD"{}\mbox{]}=="{}POST"{}) \mbox{\hyperlink{races_8php_af4b055cc1da75b5c987568598ed01c1b}{create\+New\+Race}} (\$race\+\_\+name, \$hunter\+\_\+race, \$description)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{races_8php_a3c9c82d5c79eedabcf4397c9274cb755}{\$logged\+In\+As\+Quest\+Maker}} = 0
+\item 
+\mbox{\hyperlink{races_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{races_8php_ae61e11756843d4c99b56855995571dfe}{\$create\+Race\+Error}} = "{}"{}
+\item 
+\mbox{\hyperlink{races_8php_a6d95565bbbefc18fc0d15364d816d6dd}{if}} ( \$logged\+In\+As\+Quest\+Maker $>$ 0)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File where user can see data of a all races that are available in database. Both hunters and creatures races. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{races_8php_af4b055cc1da75b5c987568598ed01c1b}\index{races.php@{races.php}!createNewRace@{createNewRace}}
+\index{createNewRace@{createNewRace}!races.php@{races.php}}
+\doxysubsubsection{\texorpdfstring{createNewRace()}{createNewRace()}}
+{\footnotesize\ttfamily \label{races_8php_af4b055cc1da75b5c987568598ed01c1b} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$\+\_\+\+SERVER\mbox{[}"{}REQUEST\+\_\+\+METHOD"{}\mbox{]}=="{}POST"{}) create\+New\+Race (\begin{DoxyParamCaption}\item[{}]{\$race\+\_\+name}{, }\item[{}]{\$hunter\+\_\+race}{, }\item[{}]{\$description}{}\end{DoxyParamCaption})}
+
+Function that creates new rase.
+
+Function checks for unique name and then if name was in fact unique, it creates new race.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$race\+\_\+name} & Name of a new race. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$description} & Description of a new race.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else return error message. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{races_8php_ae61e11756843d4c99b56855995571dfe}\index{races.php@{races.php}!\$createRaceError@{\$createRaceError}}
+\index{\$createRaceError@{\$createRaceError}!races.php@{races.php}}
+\doxysubsubsection{\texorpdfstring{\$createRaceError}{\$createRaceError}}
+{\footnotesize\ttfamily \label{races_8php_ae61e11756843d4c99b56855995571dfe} 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}} (PDOException \$e) \$create\+Race\+Error = "{}"{}}
+
+\Hypertarget{races_8php_a3c9c82d5c79eedabcf4397c9274cb755}\index{races.php@{races.php}!\$loggedInAsQuestMaker@{\$loggedInAsQuestMaker}}
+\index{\$loggedInAsQuestMaker@{\$loggedInAsQuestMaker}!races.php@{races.php}}
+\doxysubsubsection{\texorpdfstring{\$loggedInAsQuestMaker}{\$loggedInAsQuestMaker}}
+{\footnotesize\ttfamily \label{races_8php_a3c9c82d5c79eedabcf4397c9274cb755} 
+\$logged\+In\+As\+Quest\+Maker = 0}
+
+\Hypertarget{races_8php_a6d95565bbbefc18fc0d15364d816d6dd}\index{races.php@{races.php}!if@{if}}
+\index{if@{if}!races.php@{races.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}}
+{\footnotesize\ttfamily \label{races_8php_a6d95565bbbefc18fc0d15364d816d6dd} 
+if(\$logged\+In\+As\+Quest\+Maker $>$ 0) (\begin{DoxyParamCaption}\item[{}]{\$logged\+In\+As\+Quest\+Maker}{, }\item[{0}]{}{}\end{DoxyParamCaption})}
+
+\Hypertarget{races_8php_abe4cc9788f52e49485473dc699537388}\index{races.php@{races.php}!try@{try}}
+\index{try@{try}!races.php@{races.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{races_8php_abe4cc9788f52e49485473dc699537388} 
+try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{bestiary_8php_a3c9c82d5c79eedabcf4397c9274cb755}{\$loggedInAsQuestMaker}}\ =\ \mbox{\hyperlink{database_8php_ada12a90ceef55031624e6bb258532e1c}{loggedInQuestMaker}}()}
+
+\end{DoxyCode}

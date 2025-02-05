@@ -1,0 +1,112 @@
+\doxysection{loging/login.php File Reference}
+\hypertarget{login_8php}{}\label{login_8php}\index{loging/login.php@{loging/login.php}}
+
+
+A file where user can logged in as Hunter or a Quest Maker.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{login_8php_a006fefc4c36642a5bb2c0fe2d7226c87}{login\+As\+Hunter}} (\$username, \$password)
+\item 
+\mbox{\hyperlink{login_8php_a2100466a5444a4d640fed7fccf88fa58}{login\+As\+Quest\+Maker}} (\$username, \$password)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{login_8php_aefe5be08b0d022c2ffa233622185628b}{\$sql\+Error}} = \$login\+Error = "{}"{}
+\item 
+\mbox{\hyperlink{login_8php_ab3df865cc8c49abad8b9afa08cc19d44}{\$logged\+In}} = false
+\item 
+\mbox{\hyperlink{login_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(! \$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}) \mbox{\hyperlink{login_8php_acb8809ef68d962d72f129ce85c904564}{else}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+A file where user can logged in as Hunter or a Quest Maker. 
+
+Here is validated all thats necessary, password and username, before being able to login. It also redirects to registration. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{login_8php_a006fefc4c36642a5bb2c0fe2d7226c87}\index{login.php@{login.php}!loginAsHunter@{loginAsHunter}}
+\index{loginAsHunter@{loginAsHunter}!login.php@{login.php}}
+\doxysubsubsection{\texorpdfstring{loginAsHunter()}{loginAsHunter()}}
+{\footnotesize\ttfamily \label{login_8php_a006fefc4c36642a5bb2c0fe2d7226c87} 
+login\+As\+Hunter (\begin{DoxyParamCaption}\item[{}]{\$username}{, }\item[{}]{\$password}{}\end{DoxyParamCaption})}
+
+Function that checks if given username and password, matches any hunter in database.
+
+Function that checks if given username and password, matches any hunter in database. It also sets-\/up a cookie so user dont need to login, everytime they open this aplication.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$username} & Username/imię of a hunter. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$password} & Password of a hunter.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else returns error message. 
+\end{DoxyReturn}
+\Hypertarget{login_8php_a2100466a5444a4d640fed7fccf88fa58}\index{login.php@{login.php}!loginAsQuestMaker@{loginAsQuestMaker}}
+\index{loginAsQuestMaker@{loginAsQuestMaker}!login.php@{login.php}}
+\doxysubsubsection{\texorpdfstring{loginAsQuestMaker()}{loginAsQuestMaker()}}
+{\footnotesize\ttfamily \label{login_8php_a2100466a5444a4d640fed7fccf88fa58} 
+login\+As\+Quest\+Maker (\begin{DoxyParamCaption}\item[{}]{\$username}{, }\item[{}]{\$password}{}\end{DoxyParamCaption})}
+
+Function that checks if given username and password, matches any quest maker in database.
+
+Function that checks if given username and password, matches any quest maker in database. It also sets-\/up a cookie so user dont need to login, everytime they open this aplication.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$username} & Username/imię of a quest maker. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$password} & Password of a quest maker.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else returns error message. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{login_8php_ab3df865cc8c49abad8b9afa08cc19d44}\index{login.php@{login.php}!\$loggedIn@{\$loggedIn}}
+\index{\$loggedIn@{\$loggedIn}!login.php@{login.php}}
+\doxysubsubsection{\texorpdfstring{\$loggedIn}{\$loggedIn}}
+{\footnotesize\ttfamily \label{login_8php_ab3df865cc8c49abad8b9afa08cc19d44} 
+\$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}} = false}
+
+\Hypertarget{login_8php_aefe5be08b0d022c2ffa233622185628b}\index{login.php@{login.php}!\$sqlError@{\$sqlError}}
+\index{\$sqlError@{\$sqlError}!login.php@{login.php}}
+\doxysubsubsection{\texorpdfstring{\$sqlError}{\$sqlError}}
+{\footnotesize\ttfamily \label{login_8php_aefe5be08b0d022c2ffa233622185628b} 
+\$sql\+Error = \$login\+Error = "{}"{}}
+
+\Hypertarget{login_8php_acb8809ef68d962d72f129ce85c904564}\index{login.php@{login.php}!else@{else}}
+\index{else@{else}!login.php@{login.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \label{login_8php_acb8809ef68d962d72f129ce85c904564} 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} (! \$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}) else}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ header(\textcolor{stringliteral}{"{}Location:\ http://pascal.fis.agh.edu.pl/\string~2mueller/index.php"{}})}
+
+\end{DoxyCode}
+\Hypertarget{login_8php_abe4cc9788f52e49485473dc699537388}\index{login.php@{login.php}!try@{try}}
+\index{try@{try}!login.php@{login.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{login_8php_abe4cc9788f52e49485473dc699537388} 
+try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \mbox{\hyperlink{index_8php_ab3df865cc8c49abad8b9afa08cc19d44}{\$loggedIn}}\ =\ \mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{loggedIn}}()}
+
+\end{DoxyCode}

@@ -1,0 +1,92 @@
+\doxysection{sites/bestiary.php File Reference}
+\hypertarget{bestiary_8php}{}\label{bestiary_8php}\index{sites/bestiary.php@{sites/bestiary.php}}
+
+
+File where user can see data of all unique animals and creatures that can be hunted down in quests. Together with its race data.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$\+\_\+\+SERVER\mbox{[}"{}REQUEST\+\_\+\+METHOD"{}\mbox{]}=="{}POST"{}) \mbox{\hyperlink{bestiary_8php_aef2b8cf40299fbe6d382412454e131b2}{create\+Beast}} (\$name, \$id\+\_\+race, \$description)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bestiary_8php_a3c9c82d5c79eedabcf4397c9274cb755}{\$logged\+In\+As\+Quest\+Maker}} = false
+\item 
+\mbox{\hyperlink{bestiary_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a3c26849e0b4424b5555fd7feead43a09}{\$create\+Animal\+Error}} = "{}"{}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} ( \$logged\+In\+As\+Quest\+Maker==true)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File where user can see data of all unique animals and creatures that can be hunted down in quests. Together with its race data. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{bestiary_8php_aef2b8cf40299fbe6d382412454e131b2}\index{bestiary.php@{bestiary.php}!createBeast@{createBeast}}
+\index{createBeast@{createBeast}!bestiary.php@{bestiary.php}}
+\doxysubsubsection{\texorpdfstring{createBeast()}{createBeast()}}
+{\footnotesize\ttfamily \label{bestiary_8php_aef2b8cf40299fbe6d382412454e131b2} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$\+\_\+\+SERVER\mbox{[}"{}REQUEST\+\_\+\+METHOD"{}\mbox{]}=="{}POST"{}) create\+Beast (\begin{DoxyParamCaption}\item[{}]{\$name}{, }\item[{}]{\$id\+\_\+race}{, }\item[{}]{\$description}{}\end{DoxyParamCaption})}
+
+Function creates beast with provided, data.
+
+Function checks for existing race id and if name of a beast is unique. If all criteria are met, function creates new beast.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$name} & Name of a beast. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+race} & Race\textquotesingle{}s ID, of a beast. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$description} & Description of a beast.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else return error message. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{bestiary_8php_a3c26849e0b4424b5555fd7feead43a09}\index{bestiary.php@{bestiary.php}!\$createAnimalError@{\$createAnimalError}}
+\index{\$createAnimalError@{\$createAnimalError}!bestiary.php@{bestiary.php}}
+\doxysubsubsection{\texorpdfstring{\$createAnimalError}{\$createAnimalError}}
+{\footnotesize\ttfamily \label{bestiary_8php_a3c26849e0b4424b5555fd7feead43a09} 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}} (PDOException \$e) \$create\+Animal\+Error = "{}"{}}
+
+\Hypertarget{bestiary_8php_a3c9c82d5c79eedabcf4397c9274cb755}\index{bestiary.php@{bestiary.php}!\$loggedInAsQuestMaker@{\$loggedInAsQuestMaker}}
+\index{\$loggedInAsQuestMaker@{\$loggedInAsQuestMaker}!bestiary.php@{bestiary.php}}
+\doxysubsubsection{\texorpdfstring{\$loggedInAsQuestMaker}{\$loggedInAsQuestMaker}}
+{\footnotesize\ttfamily \label{bestiary_8php_a3c9c82d5c79eedabcf4397c9274cb755} 
+\$logged\+In\+As\+Quest\+Maker = false}
+
+\Hypertarget{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}\index{bestiary.php@{bestiary.php}!if@{if}}
+\index{if@{if}!bestiary.php@{bestiary.php}}
+\doxysubsubsection{\texorpdfstring{if}{if}}
+{\footnotesize\ttfamily \label{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f} 
+if (\begin{DoxyParamCaption}\item[{}]{\$logged\+In\+As\+Quest\+Maker}{ = {\ttfamily =~true}}\end{DoxyParamCaption})}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ include\ \textcolor{stringliteral}{"{}home.php"{}}}
+
+\end{DoxyCode}
+\Hypertarget{bestiary_8php_abe4cc9788f52e49485473dc699537388}\index{bestiary.php@{bestiary.php}!try@{try}}
+\index{try@{try}!bestiary.php@{bestiary.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{bestiary_8php_abe4cc9788f52e49485473dc699537388} 
+try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{bestiary_8php_a3c9c82d5c79eedabcf4397c9274cb755}{\$loggedInAsQuestMaker}}\ =\ \mbox{\hyperlink{database_8php_ada12a90ceef55031624e6bb258532e1c}{loggedInQuestMaker}}()}
+
+\end{DoxyCode}

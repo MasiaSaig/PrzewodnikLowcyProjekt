@@ -1,0 +1,76 @@
+\doxysection{sites/classes.php File Reference}
+\hypertarget{classes_8php}{}\label{classes_8php}\index{sites/classes.php@{sites/classes.php}}
+
+
+File where user can see data of all classes, that hunter can choose while registering.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$logged\+In\+As\+Quest\+Maker $>$ 0) \mbox{\hyperlink{classes_8php_a7a5d5397c02b2443e2e5269b656bdff9}{create\+Class}} (\$class\+\_\+name, \$description)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classes_8php_a3c9c82d5c79eedabcf4397c9274cb755}{\$logged\+In\+As\+Quest\+Maker}} = 0
+\item 
+\mbox{\hyperlink{classes_8php_a2c534902fb7ccc9db61a7a57a3261242}{try}}
+\item 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{classes_8php_a2a81ee2c6f29add4ecdbb0391be229a8}{\$create\+Class\+Error}} = "{}"{}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File where user can see data of all classes, that hunter can choose while registering. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{classes_8php_a7a5d5397c02b2443e2e5269b656bdff9}\index{classes.php@{classes.php}!createClass@{createClass}}
+\index{createClass@{createClass}!classes.php@{classes.php}}
+\doxysubsubsection{\texorpdfstring{createClass()}{createClass()}}
+{\footnotesize\ttfamily \label{classes_8php_a7a5d5397c02b2443e2e5269b656bdff9} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$logged\+In\+As\+Quest\+Maker $>$ 0) create\+Class (\begin{DoxyParamCaption}\item[{}]{\$class\+\_\+name}{, }\item[{}]{\$description}{}\end{DoxyParamCaption})}
+
+Function that creates new class.
+
+This function check if provided name for class is unique and if it is, it then creates new class with description.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$class\+\_\+name} & Name of a new class. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$description} & Description of a new class. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else return error message. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{classes_8php_a2a81ee2c6f29add4ecdbb0391be229a8}\index{classes.php@{classes.php}!\$createClassError@{\$createClassError}}
+\index{\$createClassError@{\$createClassError}!classes.php@{classes.php}}
+\doxysubsubsection{\texorpdfstring{\$createClassError}{\$createClassError}}
+{\footnotesize\ttfamily \label{classes_8php_a2a81ee2c6f29add4ecdbb0391be229a8} 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}} (PDOException \$e) \$create\+Class\+Error = "{}"{}}
+
+\Hypertarget{classes_8php_a3c9c82d5c79eedabcf4397c9274cb755}\index{classes.php@{classes.php}!\$loggedInAsQuestMaker@{\$loggedInAsQuestMaker}}
+\index{\$loggedInAsQuestMaker@{\$loggedInAsQuestMaker}!classes.php@{classes.php}}
+\doxysubsubsection{\texorpdfstring{\$loggedInAsQuestMaker}{\$loggedInAsQuestMaker}}
+{\footnotesize\ttfamily \label{classes_8php_a3c9c82d5c79eedabcf4397c9274cb755} 
+\$logged\+In\+As\+Quest\+Maker = 0}
+
+\Hypertarget{classes_8php_a2c534902fb7ccc9db61a7a57a3261242}\index{classes.php@{classes.php}!try@{try}}
+\index{try@{try}!classes.php@{classes.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{classes_8php_a2c534902fb7ccc9db61a7a57a3261242} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} ( \$logged\+In\+As\+Quest\+Maker $>$ 0) try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{bestiary_8php_a3c9c82d5c79eedabcf4397c9274cb755}{\$loggedInAsQuestMaker}}\ =\ \mbox{\hyperlink{database_8php_ada12a90ceef55031624e6bb258532e1c}{loggedInQuestMaker}}()}
+
+\end{DoxyCode}

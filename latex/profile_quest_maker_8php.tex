@@ -1,0 +1,195 @@
+\doxysection{profile\+Quest\+Maker.\+php File Reference}
+\hypertarget{profile_quest_maker_8php}{}\label{profile_quest_maker_8php}\index{profileQuestMaker.php@{profileQuestMaker.php}}
+
+
+This file is a profile view of a Quest Maker.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$get\+Quest\+Maker\+Data==false) \mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$\+\_\+\+SERVER\mbox{[}"{}REQUEST\+\_\+\+METHOD"{}\mbox{]}=="{}POST"{}) \mbox{\hyperlink{profile_quest_maker_8php_a04b6d6b960a18e9b19ac33dfe39814ef}{mark\+Quest\+As\+Finished}} (\$id\+\_\+quest)
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_ae5b5aec88414b425f1c968f2a974c527}{delete\+Quest}} (\$id\+\_\+quest)
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_a8b1518068ece238cd699cdf7d04b963a}{create\+New\+Quest}} (\$id\+\_\+quest\+Maker, \$money, \$description, \$beasts\+Array)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_ab3df865cc8c49abad8b9afa08cc19d44}{\$logged\+In}} = false
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_a3d12b343d049cdea93240f06b0e8467c}{try}}
+\item 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}==false) \mbox{\hyperlink{profile_quest_maker_8php_aa5e2f649aae0e82fe906481048f58da4}{\$sql\+Error}} = \$error = "{}"{}
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_aa06bbe270bd7296d475934c3c2149ca3}{\$quest\+Maker\+Data}} = \$get\+Quest\+Maker\+Data-\/$>$fetch()
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_aa318c7e6bbc17038bdc96b892538c9f6}{\$id\+\_\+quest\+Maker}} = \$quest\+Maker\+Data\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_a0eb82aa5f81cf845de4b36cd653c42cf}{\$username}} = \$quest\+Maker\+Data\mbox{[}\textquotesingle{}imię\textquotesingle{}\mbox{]}
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_a40202efcc59dc7e7286115d93b7ca737}{foreach}} ( \$beasts\+Query as \$beast)
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_a46439c2db0e349ab4a333d9c9f7bddcd}{catch}} (PDOException \$e)
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_a36a45db34512504ca54bf0d78cf3888d}{\$beasts}} = \mbox{[}$\,$\mbox{]}
+\item 
+\mbox{\hyperlink{profile_quest_maker_8php_af24d90d9b7f23676237a84f03963d972}{\$beastsN}} = \mbox{[}$\,$\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+This file is a profile view of a Quest Maker. 
+
+Most of the stuff Quest Maker may wan to access is here. He can create new quests, look at his both active and finished quests. He may cancel quests and finish them. 
+
+\doxysubsection{Function Documentation}
+\Hypertarget{profile_quest_maker_8php_a8b1518068ece238cd699cdf7d04b963a}\index{profileQuestMaker.php@{profileQuestMaker.php}!createNewQuest@{createNewQuest}}
+\index{createNewQuest@{createNewQuest}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{createNewQuest()}{createNewQuest()}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_a8b1518068ece238cd699cdf7d04b963a} 
+create\+New\+Quest (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+quest\+Maker}{, }\item[{}]{\$money}{, }\item[{}]{\$description}{, }\item[{}]{\$beasts\+Array}{}\end{DoxyParamCaption})}
+
+Creates a new quest, assigned to provided Quest Maker, with apropriate data.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+quest\+Maker} & ID of a Quest Maker, to which this quest has to be assigned. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$money} & Value of prize after completing quest. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$description,description} & of a quest. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$beasts\+Array} & Array of beasts\textquotesingle{} IDs.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else return error message. 
+\end{DoxyReturn}
+\Hypertarget{profile_quest_maker_8php_ae5b5aec88414b425f1c968f2a974c527}\index{profileQuestMaker.php@{profileQuestMaker.php}!deleteQuest@{deleteQuest}}
+\index{deleteQuest@{deleteQuest}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{deleteQuest()}{deleteQuest()}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_ae5b5aec88414b425f1c968f2a974c527} 
+delete\+Quest (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+quest}{}\end{DoxyParamCaption})}
+
+Function, that deletes quest of given ID.
+
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else return error message. 
+\end{DoxyReturn}
+\Hypertarget{profile_quest_maker_8php_a04b6d6b960a18e9b19ac33dfe39814ef}\index{profileQuestMaker.php@{profileQuestMaker.php}!markQuestAsFinished@{markQuestAsFinished}}
+\index{markQuestAsFinished@{markQuestAsFinished}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{markQuestAsFinished()}{markQuestAsFinished()}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_a04b6d6b960a18e9b19ac33dfe39814ef} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$get\+Quest\+Maker\+Data==false) \mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$\+\_\+\+SERVER\mbox{[}"{}REQUEST\+\_\+\+METHOD"{}\mbox{]}=="{}POST"{}) mark\+Quest\+As\+Finished (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+quest}{}\end{DoxyParamCaption})}
+
+Function that marks given quest as finished and distributes its prize.
+
+Function first checks if quest with provided id exists, then checks if quests status is \textquotesingle{}w trakcie\textquotesingle{} meaning if someone has already assigned it. Next if everything is correct, prize for quest is distributed to every hunter which was assigned to that quest. If a group was assigned to quest, prize is distributed to only members (\textquotesingle{}członke\textquotesingle{}) of a group.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em } & \\
+\hline
+\end{DoxyParams}
+id\+\_\+quest ID of a quest, to mark as finished.
+
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else returns error message; 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{profile_quest_maker_8php_a36a45db34512504ca54bf0d78cf3888d}\index{profileQuestMaker.php@{profileQuestMaker.php}!\$beasts@{\$beasts}}
+\index{\$beasts@{\$beasts}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{\$beasts}{\$beasts}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_a36a45db34512504ca54bf0d78cf3888d} 
+\$beasts = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{profile_quest_maker_8php_af24d90d9b7f23676237a84f03963d972}\index{profileQuestMaker.php@{profileQuestMaker.php}!\$beastsN@{\$beastsN}}
+\index{\$beastsN@{\$beastsN}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{\$beastsN}{\$beastsN}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_af24d90d9b7f23676237a84f03963d972} 
+\$beastsN = \mbox{[}$\,$\mbox{]}}
+
+\Hypertarget{profile_quest_maker_8php_aa318c7e6bbc17038bdc96b892538c9f6}\index{profileQuestMaker.php@{profileQuestMaker.php}!\$id\_questMaker@{\$id\_questMaker}}
+\index{\$id\_questMaker@{\$id\_questMaker}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{\$id\_questMaker}{\$id\_questMaker}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_aa318c7e6bbc17038bdc96b892538c9f6} 
+\$id\+\_\+quest\+Maker = \$quest\+Maker\+Data\mbox{[}\textquotesingle{}id\textquotesingle{}\mbox{]}}
+
+\Hypertarget{profile_quest_maker_8php_ab3df865cc8c49abad8b9afa08cc19d44}\index{profileQuestMaker.php@{profileQuestMaker.php}!\$loggedIn@{\$loggedIn}}
+\index{\$loggedIn@{\$loggedIn}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{\$loggedIn}{\$loggedIn}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_ab3df865cc8c49abad8b9afa08cc19d44} 
+\$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}} = false}
+
+\Hypertarget{profile_quest_maker_8php_aa06bbe270bd7296d475934c3c2149ca3}\index{profileQuestMaker.php@{profileQuestMaker.php}!\$questMakerData@{\$questMakerData}}
+\index{\$questMakerData@{\$questMakerData}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{\$questMakerData}{\$questMakerData}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_aa06bbe270bd7296d475934c3c2149ca3} 
+\$quest\+Maker\+Data = \$get\+Quest\+Maker\+Data-\/$>$fetch()}
+
+\Hypertarget{profile_quest_maker_8php_aa5e2f649aae0e82fe906481048f58da4}\index{profileQuestMaker.php@{profileQuestMaker.php}!\$sqlError@{\$sqlError}}
+\index{\$sqlError@{\$sqlError}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{\$sqlError}{\$sqlError}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_aa5e2f649aae0e82fe906481048f58da4} 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} ( \$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}==false) \$sql\+Error = \$error = "{}"{}}
+
+\Hypertarget{profile_quest_maker_8php_a0eb82aa5f81cf845de4b36cd653c42cf}\index{profileQuestMaker.php@{profileQuestMaker.php}!\$username@{\$username}}
+\index{\$username@{\$username}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{\$username}{\$username}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_a0eb82aa5f81cf845de4b36cd653c42cf} 
+\$username = \$quest\+Maker\+Data\mbox{[}\textquotesingle{}imię\textquotesingle{}\mbox{]}}
+
+\Hypertarget{profile_quest_maker_8php_a46439c2db0e349ab4a333d9c9f7bddcd}\index{profileQuestMaker.php@{profileQuestMaker.php}!catch@{catch}}
+\index{catch@{catch}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{catch}{catch}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_a46439c2db0e349ab4a333d9c9f7bddcd} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}quest\+Status\textquotesingle{}\mbox{]}) \&\&(\$\+\_\+\+POST\mbox{[}\textquotesingle{}quest\+Status\textquotesingle{}\mbox{]}==\textquotesingle{}oczekuje\textquotesingle{})) \mbox{\hyperlink{index_8php_a4d15ad3a3e79bbaf310747f326954d1e}{else}} \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$\+\_\+\+POST\mbox{[} \textquotesingle{}quest\+Status\textquotesingle{}\mbox{]}==\textquotesingle{}w trakcie\textquotesingle{}) \mbox{\hyperlink{index_8php_a4d15ad3a3e79bbaf310747f326954d1e}{else}} \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$\+\_\+\+POST\mbox{[}\textquotesingle{}quest\+Status\textquotesingle{}\mbox{]}==\textquotesingle{}zakończone\textquotesingle{}) catch(PDOException \$e) (\begin{DoxyParamCaption}\item[{PDOException}]{\$e}{}\end{DoxyParamCaption})}
+
+\Hypertarget{profile_quest_maker_8php_a40202efcc59dc7e7286115d93b7ca737}\index{profileQuestMaker.php@{profileQuestMaker.php}!foreach@{foreach}}
+\index{foreach@{foreach}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{foreach}{foreach}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_a40202efcc59dc7e7286115d93b7ca737} 
+foreach (\begin{DoxyParamCaption}\item[{}]{\$beasts\+Query as}{}\end{DoxyParamCaption})}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \textcolor{keywordflow}{if}(\$quest[\textcolor{stringliteral}{'status'}]\ ==\ \textcolor{stringliteral}{"{}zakończone"{}})\{}
+\DoxyCodeLine{\ \ \ \ \$getHunters\ =\ \mbox{\hyperlink{database_8php_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{"{}SELECT\ l.imię\ FROM\ prj.łowca\ l\ JOIN\ prj.przypisane\_zlecenie\ pz\ ON\ l.id=pz.id\_łowca\ JOIN\ prj.zlecenie\ z\ ON\ z.id=pz.id\_zlecenie\ WHERE\ z.id=?"{}});}
+\DoxyCodeLine{\ \ \ \ \$getHunters-\/>bindParam(1,\ \$\_GET[\textcolor{stringliteral}{'id\_quest'}],\ PDO::PARAM\_INT);}
+\DoxyCodeLine{\ \ \ \ \$getHunters-\/>execute();}
+\DoxyCodeLine{\ \ \ \ \textcolor{keywordflow}{if}(\$getHunters\ ==\ \textcolor{keyword}{false})\{}
+\DoxyCodeLine{\ \ \ \ \ \ \mbox{\hyperlink{quest_8php_aae0cc21f51de5ad0379ae62b8784814e}{\$questError}}\ =\ \mbox{\hyperlink{quest_8php_aae0cc21f51de5ad0379ae62b8784814e}{\$questError}}\ .\ \textcolor{stringliteral}{"{}\ Nie\ mozna\ otrzymać\ danych\ łowców\ którzy\ wynkonali\ to\ zlecenie.<br>"{}};}
+\DoxyCodeLine{\ \ \ \ \}\textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{\ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}<br>"{}};}
+\DoxyCodeLine{\ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}<p>Łowcy\ którzy\ ukończyli\ to\ zlecenie:</p>"{}};}
+\DoxyCodeLine{\ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}<ul\ style=\(\backslash\)"{}padding-\/left:\ 15px;\(\backslash\)"{}>"{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \textcolor{keywordflow}{foreach}(\$getHunters\ as\ \$hunter)\{}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}<li>"{}}.\$hunter[\textcolor{stringliteral}{'imię'}].\textcolor{stringliteral}{"{}</li>"{}};}
+\DoxyCodeLine{\ \ \ \ \ \ \}}
+\DoxyCodeLine{\ \ \ \ \ \ echo\ \textcolor{stringliteral}{"{}</ul>"{}};}
+\DoxyCodeLine{\ \ \ \ \}}
+\DoxyCodeLine{\ \ \}}
+\DoxyCodeLine{\}\textcolor{keywordflow}{catch}(PDOException\ \$e)\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{login_8php_aefe5be08b0d022c2ffa233622185628b}{\$sqlError}}\ =\ \mbox{\hyperlink{login_8php_aefe5be08b0d022c2ffa233622185628b}{\$sqlError}}\ .\ \textcolor{stringliteral}{"{}\ |\ "{}}\ .\ \$e-\/>getMessage();}
+\DoxyCodeLine{\}}
+\DoxyCodeLine{}
+\DoxyCodeLine{echo\ \textcolor{stringliteral}{"{}<p\ style=\(\backslash\)"{}color:\ red;\(\backslash\)"{}>"{}}.\$questError.\textcolor{stringliteral}{"{}</p>"{}}}
+
+\end{DoxyCode}
+\Hypertarget{profile_quest_maker_8php_a3d12b343d049cdea93240f06b0e8467c}\index{profileQuestMaker.php@{profileQuestMaker.php}!try@{try}}
+\index{try@{try}!profileQuestMaker.php@{profileQuestMaker.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{profile_quest_maker_8php_a3d12b343d049cdea93240f06b0e8467c} 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}} (PDOException \$e) try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \mbox{\hyperlink{index_8php_ab3df865cc8c49abad8b9afa08cc19d44}{\$loggedIn}}\ =\ \mbox{\hyperlink{database_8php_ada12a90ceef55031624e6bb258532e1c}{loggedInQuestMaker}}()}
+
+\end{DoxyCode}

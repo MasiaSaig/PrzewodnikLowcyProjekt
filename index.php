@@ -1,25 +1,21 @@
-<?php 
+<?php
+/**
+ * @file index.php
+ * @brief Starting view for hunter, mostly HTML file, that redirects to sections where user can see data, edit them and login or register.
+ *
+ * This file includes necessary files which user may want to access, most of the stuff can be accessed from here.
+ */
+ 
 session_start(); 
-
 require "database.php";
+
 $loggedIn = false;
-function loggedIn(){
-	// check cookie if user is logged in
-	global $pdo;
-	$loggedInCheck = $pdo->prepare("SELECT (token_autoryzacji = :authLoginCookie) FROM prj.łowca WHERE token_autoryzacji=:authLoginCookie");
-	$loggedInCheck->execute(['authLoginCookie' => $_COOKIE['authLoginToken']]);
-	if($loggedInCheck->fetchColumn() == 1){
-		// user already logged in
-		return true;
-	}// else could not redirect, possibly wrong cookie loginToken, or user is just not logged in.
-	return false;
+try{
+  $loggedIn = loggedIn();
+}catch(PDOException $e){
+  echo "Błąd podczas sprawdzania czy użytkownik jest zalogowany: ".$e->getMessage();
 }
 
-try{
-	$loggedIn = loggedIn();
-}catch(PDOException $e){
-	echo "BŁĄD podczas sprawdzania, czy użytkownik jest zalogowany: ". $e->getMessage();
-}
 ?>
 
 <!DOCTYPE html>
@@ -49,68 +45,51 @@ try{
 <section id="mainWindow">
 	<nav id="navbar">
 		<a class="logo" href="index.php?page=home">Ł</a>
-		<a href="index.php?page=gildie">Gildie</a>
-		<a href="index.php?page=bestiariusz">Bestiariusz</a>
-		<a href="index.php?page=klasy">Klasy</a>
-		
+		<a href="index.php?page=guilds">Gildie</a>
+		<a href="index.php?page=bestiary">Bestiariusz</a>
+		<a href="index.php?page=classes">Klasy</a>
+    <a href="index.php?page=races">Rasy</a>
+	  <?php 
+			if($loggedIn){
+        echo "<a href=\"index.php?page=quests\">Zlecenia</a>";
+      }      
+    ?>
+   
 		<div id="navbar-right">
 			<?php 
 			if($loggedIn){
-				echo "<a href=\"http://pascal.fis.agh.edu.pl/~2mueller/logowanie/wyloguj.php\">Wyloguj</a>";
+        echo "<a href=\"http://pascal.fis.agh.edu.pl/~2mueller/profile.php\">Profil Łowcy</a>";
+				echo "<a href=\"http://pascal.fis.agh.edu.pl/~2mueller/loging/logout.php\">Wyloguj</a>";
 			} else {
-				echo "<a href=\"logowanie/logowanie.php\">Logowanie</a>";
-				echo "<a href=\"logowanie/rejestracja.php\">Rejestracja</a>";
+				echo "<a href=\"loging/login.php\">Logowanie</a>";
+				echo "<a href=\"loging/registration.php\">Rejestracja</a>";
 			} ?>
 		</div>
 	</nav>
 
 	<div id="content">
-		<!-- <div> <?php echo phpversion(); ?> asad</div>
-		<div> <?php include "database.php"; ?> asda</div> -->
 
 		<?php 
 		if(isset($_GET["page"])){ 
-			if((include $_GET["page"] . ".php") == FALSE)
+			if((include "sites/" . $_GET["page"].".php") == FALSE)
 				include "home.php";
-		} else{
+		} else if(isset($_GET["id_guild"])){
+      include "sites/guild.php";
+    } else if(isset($_GET["id_beast"])){
+      include "sites/beast.php";
+    }else if(isset($_GET['id_quest'])){
+      include "sites/quest.php";
+    } else{
 			include "home.php"; 
 		}
 		?>
 
-		<?php //if($_SESSION[]) ?>
-		<aside>
+    <p><?php echo $error; echo $sqlError; ?></p>
 
-		</aside> 
 	</div>
 </section>
 </section>
 
-<!-- <footer>
-
-</footer> -->
-
-
-<script>
-	// $(document).ready(function(){
-	// 	$(".navbar-link").on("click", function(e){
-	// 		e.preventDefault();
-	// 		loadContent($(this).data("page"));
-	// 	});
-		
-	// 	// by default
-	// 	loadContent("home")
-
-	// 	function loadContent(page){
-	// 		$.ajax({
-	// 			url: "sites/"+page+".php",
-	// 			method: "GET",
-	// 			success: function(data) { $("#content").html(data); },
-	// 			error: function() { $("#content").html("<h2 class=\"error\">Wystąpił Błąd podczas ładowania strony.</h2>"); }
-	// 		});
-	// 	}
-	// });
-
-</script>
 </body>
 </html>
 

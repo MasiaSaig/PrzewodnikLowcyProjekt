@@ -1,0 +1,158 @@
+\doxysection{sites/guild.php File Reference}
+\hypertarget{guild_8php}{}\label{guild_8php}\index{sites/guild.php@{sites/guild.php}}
+
+
+File where user can see data of a certain guild. Its members and collected gold. If hunter is creator of that guild, here he can also add new members.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}==true) \mbox{\hyperlink{guild_8php_a596a62f0d0b7f149262387cfb7ee8f0b}{is\+Guild\+Creator}} (\$id\+\_\+hunter, \$id\+\_\+guild)
+\item 
+\mbox{\hyperlink{guild_8php_a23c4ba0872b4c565706669500fc53d68}{add\+New\+Guild\+Member}} (\$id\+\_\+guild, \$new\+Member\+Name)
+\item 
+\mbox{\hyperlink{guild_8php_aba053882d59d97a38a8e92550d89dedf}{remove\+Guild\+Member}} (\$id\+\_\+hunter, \$id\+\_\+guild, \$id\+\_\+member)
+\item 
+\mbox{\hyperlink{guild_8php_ac243238f9a14b7c0641dc9f2595805b7}{delete\+Guild}} (\$id\+\_\+hunter, \$id\+\_\+guild)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(!isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}id\+\_\+guild\textquotesingle{}\mbox{]})\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}!is\+\_\+numeric(\$\+\_\+\+GET\mbox{[}\textquotesingle{}id\+\_\+guild\textquotesingle{}\mbox{]})) \mbox{\hyperlink{guild_8php_abe4cc9788f52e49485473dc699537388}{try}}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$check\+Guild-\/$>$fetch\+Column()==0) \mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$guild\+Error\+ID) \mbox{\hyperlink{guild_8php_a44f4de7aa9e8772e160c168ca410f0c4}{\$error\+Gildii}} = "{}"{}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$guild\+Query==false) \mbox{\hyperlink{guild_8php_a83905b84aea3b643dc092a4cc16f118c}{\$data}} = \$guild\+Query-\/$>$fetch(PDO\+::\+FETCH\+\_\+\+ASSOC)
+\item 
+\mbox{\hyperlink{guild_8php_a4c02af40dc23ebcbfdf20ae145ef9824}{catch}} (PDOException \$e)
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(isset(\$\+\_\+\+POST\mbox{[}\textquotesingle{}finished\+Guild\+Quests\textquotesingle{}\mbox{]})) \mbox{\hyperlink{guild_8php_a1e6176675a1af7b864d8da1460a0fc46}{else}} \{
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File where user can see data of a certain guild. Its members and collected gold. If hunter is creator of that guild, here he can also add new members. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{guild_8php_a23c4ba0872b4c565706669500fc53d68}\index{guild.php@{guild.php}!addNewGuildMember@{addNewGuildMember}}
+\index{addNewGuildMember@{addNewGuildMember}!guild.php@{guild.php}}
+\doxysubsubsection{\texorpdfstring{addNewGuildMember()}{addNewGuildMember()}}
+{\footnotesize\ttfamily \label{guild_8php_a23c4ba0872b4c565706669500fc53d68} 
+add\+New\+Guild\+Member (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+guild}{, }\item[{}]{\$new\+Member\+Name}{}\end{DoxyParamCaption})}
+
+Function that adds new hunter to a guild.
+
+It first checks if provided hunter\textquotesingle{}s name exists, then it checks if this hunter isnt already a member of another guild. If his name is correct and he isnt a member of any other guild, an invitation is send to him, to join a guild.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+guild} & ID of a guild. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$new\+Member\+Name} & Name of a new hunter, to add, to a guild. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else return error message. 
+\end{DoxyReturn}
+\Hypertarget{guild_8php_ac243238f9a14b7c0641dc9f2595805b7}\index{guild.php@{guild.php}!deleteGuild@{deleteGuild}}
+\index{deleteGuild@{deleteGuild}!guild.php@{guild.php}}
+\doxysubsubsection{\texorpdfstring{deleteGuild()}{deleteGuild()}}
+{\footnotesize\ttfamily \label{guild_8php_ac243238f9a14b7c0641dc9f2595805b7} 
+delete\+Guild (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter}{, }\item[{}]{\$id\+\_\+guild}{}\end{DoxyParamCaption})}
+
+Function that deletes guild.
+
+It first checks if provided hunter is creator of a guild, only then it can be deleted with all of its members.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+hunter} & ID of a hunter, should be creator of a given guild. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+guild} & ID of a guild to delete. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else return error message. 
+\end{DoxyReturn}
+\Hypertarget{guild_8php_a596a62f0d0b7f149262387cfb7ee8f0b}\index{guild.php@{guild.php}!isGuildCreator@{isGuildCreator}}
+\index{isGuildCreator@{isGuildCreator}!guild.php@{guild.php}}
+\doxysubsubsection{\texorpdfstring{isGuildCreator()}{isGuildCreator()}}
+{\footnotesize\ttfamily \label{guild_8php_a596a62f0d0b7f149262387cfb7ee8f0b} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(\$\mbox{\hyperlink{database_8php_a146eead26b1ca846b48359954ca40c80}{logged\+In}}==true) is\+Guild\+Creator (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter}{, }\item[{}]{\$id\+\_\+guild}{}\end{DoxyParamCaption})}
+
+Function that checks if provided hunter, is creator of a given guild.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+hunter} & ID of a hunter to check. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+guild} & ID of a guild. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns true if hunter is a creator of a guild, else returns false. 
+\end{DoxyReturn}
+\Hypertarget{guild_8php_aba053882d59d97a38a8e92550d89dedf}\index{guild.php@{guild.php}!removeGuildMember@{removeGuildMember}}
+\index{removeGuildMember@{removeGuildMember}!guild.php@{guild.php}}
+\doxysubsubsection{\texorpdfstring{removeGuildMember()}{removeGuildMember()}}
+{\footnotesize\ttfamily \label{guild_8php_aba053882d59d97a38a8e92550d89dedf} 
+remove\+Guild\+Member (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+hunter}{, }\item[{}]{\$id\+\_\+guild}{, }\item[{}]{\$id\+\_\+member}{}\end{DoxyParamCaption})}
+
+Function that removed member from a guild
+
+It first checks if provided hunter is creator of a guild, only then it can delete member, if that member exists. Also if that member is a creator of a Guild, he cannot be removed.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+hunter} & ID of a hunter, should be creator of a given guild. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+guild} & ID of a guild. \\
+\hline
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+member} & ID of a guild member that is to be removed. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns empty string on success, else return error message. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{guild_8php_a83905b84aea3b643dc092a4cc16f118c}\index{guild.php@{guild.php}!\$data@{\$data}}
+\index{\$data@{\$data}!guild.php@{guild.php}}
+\doxysubsubsection{\texorpdfstring{\$data}{\$data}}
+{\footnotesize\ttfamily \label{guild_8php_a83905b84aea3b643dc092a4cc16f118c} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} ( \$guild\+Query==false) \$data = \$guild\+Query-\/$>$fetch(PDO\+::\+FETCH\+\_\+\+ASSOC)}
+
+\Hypertarget{guild_8php_a44f4de7aa9e8772e160c168ca410f0c4}\index{guild.php@{guild.php}!\$errorGildii@{\$errorGildii}}
+\index{\$errorGildii@{\$errorGildii}!guild.php@{guild.php}}
+\doxysubsubsection{\texorpdfstring{\$errorGildii}{\$errorGildii}}
+{\footnotesize\ttfamily \label{guild_8php_a44f4de7aa9e8772e160c168ca410f0c4} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$check\+Guild-\/$>$fetch\+Column()==0) \mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} ( \$guild\+Error\+ID) \$error\+Gildii = "{}"{}}
+
+\Hypertarget{guild_8php_a4c02af40dc23ebcbfdf20ae145ef9824}\index{guild.php@{guild.php}!catch@{catch}}
+\index{catch@{catch}!guild.php@{guild.php}}
+\doxysubsubsection{\texorpdfstring{catch}{catch}}
+{\footnotesize\ttfamily \label{guild_8php_a4c02af40dc23ebcbfdf20ae145ef9824} 
+catch(PDOException \$e) (\begin{DoxyParamCaption}\item[{PDOException}]{\$e}{}\end{DoxyParamCaption})}
+
+\Hypertarget{guild_8php_a1e6176675a1af7b864d8da1460a0fc46}\index{guild.php@{guild.php}!else@{else}}
+\index{else@{else}!guild.php@{guild.php}}
+\doxysubsubsection{\texorpdfstring{else}{else}}
+{\footnotesize\ttfamily \label{guild_8php_a1e6176675a1af7b864d8da1460a0fc46} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} (isset( \$\+\_\+\+POST\mbox{[} \textquotesingle{}finished\+Guild\+Quests\textquotesingle{}\mbox{]})) else \{}
+
+\Hypertarget{guild_8php_abe4cc9788f52e49485473dc699537388}\index{guild.php@{guild.php}!try@{try}}
+\index{try@{try}!guild.php@{guild.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{guild_8php_abe4cc9788f52e49485473dc699537388} 
+try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \$checkGuild\ =\ \mbox{\hyperlink{database_8php_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{"{}SELECT\ (id=?)\ FROM\ prj.gildia\ WHERE\ id=?"{}})}
+
+\end{DoxyCode}

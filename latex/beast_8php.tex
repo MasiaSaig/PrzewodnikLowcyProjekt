@@ -1,0 +1,58 @@
+\doxysection{sites/beast.php File Reference}
+\hypertarget{beast_8php}{}\label{beast_8php}\index{sites/beast.php@{sites/beast.php}}
+
+
+File where user can see data of a certain beast. Beast is taken from database given by GET variable.  
+
+
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{beast_8php_a578f21f24b13c32fb738e2f4af2f9031}{get\+Beast\+Data}} (\$id\+\_\+beast)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}(!isset(\$\+\_\+\+GET\mbox{[}\textquotesingle{}id\+\_\+beast\textquotesingle{}\mbox{]})\texorpdfstring{$\vert$}{|}\texorpdfstring{$\vert$}{|}!is\+\_\+numeric(\$\+\_\+\+GET\mbox{[}\textquotesingle{}id\+\_\+beast\textquotesingle{}\mbox{]})) \mbox{\hyperlink{beast_8php_a269dcaf4bb21c5b29cfdde47ecee7e09}{try}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+File where user can see data of a certain beast. Beast is taken from database given by GET variable. 
+
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{beast_8php_a578f21f24b13c32fb738e2f4af2f9031}\index{beast.php@{beast.php}!getBeastData@{getBeastData}}
+\index{getBeastData@{getBeastData}!beast.php@{beast.php}}
+\doxysubsubsection{\texorpdfstring{getBeastData()}{getBeastData()}}
+{\footnotesize\ttfamily \label{beast_8php_a578f21f24b13c32fb738e2f4af2f9031} 
+\mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) get\+Beast\+Data (\begin{DoxyParamCaption}\item[{}]{\$id\+\_\+beast}{}\end{DoxyParamCaption})}
+
+Function that get beast\textquotesingle{}s data.
+
+Function returns beast\textquotesingle{}s data as associative array with informations such as\+: id, name, description, race, race description.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \$id\+\_\+beast} & ID of a beast.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Returns associative array with beast\textquotesingle{}s data. 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{beast_8php_a269dcaf4bb21c5b29cfdde47ecee7e09}\index{beast.php@{beast.php}!try@{try}}
+\index{try@{try}!beast.php@{beast.php}}
+\doxysubsubsection{\texorpdfstring{try}{try}}
+{\footnotesize\ttfamily \label{beast_8php_a269dcaf4bb21c5b29cfdde47ecee7e09} 
+\mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}}( \$check\+Beast-\/$>$fetch\+Column()==0) \mbox{\hyperlink{profile_8php_aed41528b3f9462f36e85f397ac2c64b5}{catch}}(PDOException \$e) \mbox{\hyperlink{bestiary_8php_a9658c84eded5af0e2e67f1ad14f56f6f}{if}} ( \$beast\+Error\+ID) try}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{}
+\DoxyCodeLine{\ \ \$checkBeast\ =\ \mbox{\hyperlink{database_8php_a5766efd703cef0e00bfc06b3f3acbe0e}{\$pdo}}-\/>prepare(\textcolor{stringliteral}{"{}SELECT\ (id=?)\ FROM\ prj.zwierzę\ WHERE\ id=?"{}})}
+
+\end{DoxyCode}
